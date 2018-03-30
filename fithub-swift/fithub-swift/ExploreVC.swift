@@ -12,6 +12,9 @@ import UIKit
 class ExploreVC: UIViewController {
     
     @IBOutlet weak var scrollContainer: UIScrollView!
+    @IBAction func onButtonPress(_ sender: Any) {
+        print("hello world!")
+    }
     @IBOutlet weak var chairList: UIStackView!
     
     override func viewDidLoad() {
