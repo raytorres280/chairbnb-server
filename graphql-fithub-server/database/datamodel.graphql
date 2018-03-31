@@ -1,0 +1,45 @@
+type Post {
+  id: ID! @unique
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  isPublished: Boolean! @default(value: "false")
+  title: String!
+  text: String!
+  author: User!
+}
+
+type User {
+  id: ID! @unique
+  email: String! @unique
+  password: String!
+  name: String!
+  posts: [Post!]!
+  logs: [Log!]!
+}
+
+type Log {
+  id: ID! @unique
+  totalCalories: Int @default(value: 0)
+  totalProteins: Int @default(value: 0)
+  totalCarbs: Int @default(value: 0)
+  totalFats: Int @default(value: 0)
+  totalWater: Int @default(value: 0)
+  caloriesBurned: Int @default(value: 0)
+  run: Run
+  meals: [Meal!]!
+  didRun: Boolean! @default(value: "false")
+}
+
+type Meal {
+  id: ID! @unique
+  calories: Int @default(value: 0)
+  proteins: Int @default(value: 0)
+  carbs: Int @default(value: 0)
+  fats: Int @default(value: 0)
+  logs: [Log!]!
+}
+
+type Run {
+  id: ID! @unique
+  distance: Float!
+}

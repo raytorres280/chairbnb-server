@@ -78,13 +78,6 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RAp-G5-AIF">
                                 <rect key="frame" x="0.0" y="44" width="375" height="685"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="XLA-qA-1MD">
-                                        <rect key="frame" x="0.0" y="198" width="375" height="487"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="487" id="yVT-oi-EZs"/>
-                                        </constraints>
-                                        <viewLayoutGuide key="safeArea" id="JXe-zX-4MJ"/>
-                                    </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHo-az-50v">
                                         <rect key="frame" x="147" y="370" width="80" height="30"/>
                                         <state key="normal" title="Hello World"/>
@@ -92,16 +85,37 @@
                                             <action selector="onButtonPress:" destination="dcJ-Uc-k2u" eventType="touchUpInside" id="BA3-fx-8LS"/>
                                         </connections>
                                     </button>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="GRn-MA-vqR">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="685"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="M5h-Zu-bki">
+                                            <size key="itemSize" width="300" height="50"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="hc9-Nv-YKs">
+                                                <rect key="frame" x="37.666666666666664" y="0.0" width="300" height="50"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </view>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.95294117649999999" green="0.78823529410000004" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="XLA-qA-1MD" firstAttribute="top" secondItem="RAp-G5-AIF" secondAttribute="top" constant="198" id="5jB-OO-0fS"/>
-                                    <constraint firstItem="XLA-qA-1MD" firstAttribute="leading" secondItem="RAp-G5-AIF" secondAttribute="leading" id="UXN-Zt-RGL"/>
-                                    <constraint firstItem="XLA-qA-1MD" firstAttribute="centerX" secondItem="RAp-G5-AIF" secondAttribute="centerX" id="X7R-WY-LMm"/>
+                                    <constraint firstItem="GRn-MA-vqR" firstAttribute="leading" secondItem="RAp-G5-AIF" secondAttribute="leading" id="0Ut-HG-Q00"/>
+                                    <constraint firstItem="GRn-MA-vqR" firstAttribute="centerY" secondItem="RAp-G5-AIF" secondAttribute="centerY" id="591-ka-mGI"/>
+                                    <constraint firstItem="GRn-MA-vqR" firstAttribute="centerX" secondItem="RAp-G5-AIF" secondAttribute="centerX" id="DFC-Td-w4k"/>
+                                    <constraint firstAttribute="bottom" secondItem="GRn-MA-vqR" secondAttribute="bottom" id="PIB-sb-SRQ"/>
+                                    <constraint firstItem="GRn-MA-vqR" firstAttribute="centerX" secondItem="KHo-az-50v" secondAttribute="centerX" id="S5G-s3-aPz"/>
                                     <constraint firstItem="KHo-az-50v" firstAttribute="top" secondItem="RAp-G5-AIF" secondAttribute="top" constant="370" id="X8a-G0-WsT"/>
-                                    <constraint firstItem="XLA-qA-1MD" firstAttribute="centerX" secondItem="KHo-az-50v" secondAttribute="centerX" id="q2h-rM-pgt"/>
-                                    <constraint firstAttribute="trailing" secondItem="XLA-qA-1MD" secondAttribute="trailing" id="s0v-E3-eVF"/>
-                                    <constraint firstAttribute="bottom" secondItem="XLA-qA-1MD" secondAttribute="bottom" id="vzh-Wi-wfu"/>
+                                    <constraint firstItem="GRn-MA-vqR" firstAttribute="top" secondItem="RAp-G5-AIF" secondAttribute="top" id="cP2-Nf-Cor"/>
+                                    <constraint firstAttribute="trailing" secondItem="GRn-MA-vqR" secondAttribute="trailing" id="upu-BM-hyy"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="dcJ-Uc-k2u" id="slA-pW-Btf"/>
@@ -119,7 +133,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Search" image="icons8-search-50" id="j3O-Hu-m8E"/>
                     <connections>
-                        <outlet property="chairList" destination="XLA-qA-1MD" id="qrK-5X-q4B"/>
+                        <outlet property="logCollection" destination="GRn-MA-vqR" id="bpy-DB-cn4"/>
                         <outlet property="scrollContainer" destination="RAp-G5-AIF" id="oDi-E8-ptN"/>
                     </connections>
                 </viewController>

@@ -15,7 +15,7 @@ class ExploreVC: UIViewController {
     @IBAction func onButtonPress(_ sender: Any) {
         print("hello world!")
     }
-    @IBOutlet weak var chairList: UIStackView!
+    @IBOutlet weak var logCollection: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +24,6 @@ class ExploreVC: UIViewController {
         
         let newView = UIView()
         newView.backgroundColor = UIColor.blue
-        
-        chairList.addSubview(newView)
         
         guard let url = URL(string: "http://localhost:8080/users") else { return }
         
