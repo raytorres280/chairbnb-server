@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fithub-swift/AppDelegate.swift"
-            timestampString = "544329390.3202749"
+            timestampString = "544398719.7345099"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
             landmarkName = "AppDelegate"
             landmarkType = "3">
          </BreakpointContent>

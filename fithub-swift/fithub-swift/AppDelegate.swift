@@ -9,11 +9,13 @@
 import UIKit
 import Apollo
 
+let apollo = ApolloClient(url: URL(string: "http://localhost:4000")!)
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let apollo = ApolloClient(url: URL(string: "http://localhost:4000")!)
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true

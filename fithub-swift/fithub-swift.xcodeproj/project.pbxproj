@@ -16,7 +16,9 @@
 		9E6996421FB58EE80057A43A /* CircleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6996411FB58EE80057A43A /* CircleModel.swift */; };
 		9E8184FB2072065E00A95CD6 /* Logs.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 9E8184FA2072065E00A95CD6 /* Logs.graphql */; };
 		9EA92D1C207173590069317C /* MealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA92D1B207173590069317C /* MealModel.swift */; };
-		9EDCEFD020721E6500E0910C /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 9EDCEFCF20721E6500E0910C /* schema.json */; };
+		9EECF71B2072CD17002D180D /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EECF71A2072CD17002D180D /* API.swift */; };
+		9EECF71D2072D323002D180D /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 9EECF71C2072D322002D180D /* schema.json */; };
+		9EECF71F2072D412002D180D /* Meals.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 9EECF71E2072D412002D180D /* Meals.graphql */; };
 		9EF8C6E5206F7AB80085BD19 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF8C6E4206F7AB80085BD19 /* CollectionViewCell.swift */; };
 		BFA8802F46A62FFAC588B267 /* Pods_fithub_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C78F57B2911EB5D9C7B1086 /* Pods_fithub_swift.framework */; };
 /* End PBXBuildFile section */
@@ -35,7 +37,9 @@
 		9E6996411FB58EE80057A43A /* CircleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleModel.swift; sourceTree = "<group>"; };
 		9E8184FA2072065E00A95CD6 /* Logs.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Logs.graphql; sourceTree = "<group>"; };
 		9EA92D1B207173590069317C /* MealModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealModel.swift; sourceTree = "<group>"; };
-		9EDCEFCF20721E6500E0910C /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = SOURCE_ROOT; };
+		9EECF71A2072CD17002D180D /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		9EECF71C2072D322002D180D /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		9EECF71E2072D412002D180D /* Meals.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Meals.graphql; sourceTree = "<group>"; };
 		9EF8C6E4206F7AB80085BD19 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CollectionViewCell.swift; path = "/Users/raymondtorres/Developer/chairbnb-swift/fithub-swift/fithub-swift/CollectionViewCell.swift"; sourceTree = "<absolute>"; };
 		D6FD32B8256D5AA5598BB606 /* Pods-fithub-swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fithub-swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fithub-swift/Pods-fithub-swift.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -90,8 +94,10 @@
 		9E6996221FB57B590057A43A /* fithub-swift */ = {
 			isa = PBXGroup;
 			children = (
-				9EDCEFCF20721E6500E0910C /* schema.json */,
+				9EECF71C2072D322002D180D /* schema.json */,
+				9EECF71A2072CD17002D180D /* API.swift */,
 				9E8184FA2072065E00A95CD6 /* Logs.graphql */,
+				9EECF71E2072D412002D180D /* Meals.graphql */,
 				9EF8C6E4206F7AB80085BD19 /* CollectionViewCell.swift */,
 				9E6996231FB57B590057A43A /* AppDelegate.swift */,
 				9E69962B1FB57B5A0057A43A /* Main.storyboard */,
@@ -170,9 +176,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E8184FB2072065E00A95CD6 /* Logs.graphql in Resources */,
-				9EDCEFD020721E6500E0910C /* schema.json in Resources */,
+				9EECF71D2072D323002D180D /* schema.json in Resources */,
 				9E6996321FB57B5A0057A43A /* LaunchScreen.storyboard in Resources */,
 				9E69962F1FB57B5A0057A43A /* Assets.xcassets in Resources */,
+				9EECF71F2072D412002D180D /* Meals.graphql in Resources */,
 				9E69962D1FB57B5A0057A43A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -260,6 +267,7 @@
 				9E6996421FB58EE80057A43A /* CircleModel.swift in Sources */,
 				9EA92D1C207173590069317C /* MealModel.swift in Sources */,
 				9E6996241FB57B590057A43A /* AppDelegate.swift in Sources */,
+				9EECF71B2072CD17002D180D /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

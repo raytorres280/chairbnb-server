@@ -1,0 +1,6 @@
+query Meals {
+    meals {
+        id
+        name
+    }
+}

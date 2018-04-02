@@ -28,21 +28,25 @@ class ExploreVC: UIViewController, UICollectionViewDataSource {
         
         guard let url = URL(string: "http://localhost:8080/users") else { return }
         
-        let session = URLSession.shared
-        session.dataTask(with: url) { (data, response, err) in
-            if let response = response {
-                dump(response)
-            }
-            
-            if let data = data {
-                dump(data)
-            }
-            
-            if let err = err {
-                print(err)
-            }
-            
-        }.resume()
+        apollo.fetch(query: LogsByUserIdQuery(id: "cjfhzy3j500630131ccrr3t8y")) { (result, err) in
+            print("came back from first swift query!")
+            print(result)
+        }
+//        let session = URLSession.shared
+//        session.dataTask(with: url) { (data, response, err) in
+//            if let response = response {
+//                dump(response)
+//            }
+//
+//            if let data = data {
+//                dump(data)
+//            }
+//
+//            if let err = err {
+//                print(err)
+//            }
+//
+//        }.resume()
         
     }
     
