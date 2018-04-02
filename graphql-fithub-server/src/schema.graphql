@@ -5,6 +5,8 @@ type Query {
   drafts: [Post!]!
   post(id: ID!): Post
   me: User
+  logsByUserId(id: ID!): [Log!]!
+  meals: [Meal!]!
 }
 
 type Mutation {

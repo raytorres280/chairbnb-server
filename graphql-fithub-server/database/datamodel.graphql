@@ -19,19 +19,18 @@ type User {
 
 type Log {
   id: ID! @unique
-  totalCalories: Int @default(value: 0)
-  totalProteins: Int @default(value: 0)
-  totalCarbs: Int @default(value: 0)
-  totalFats: Int @default(value: 0)
   totalWater: Int @default(value: 0)
   caloriesBurned: Int @default(value: 0)
   run: Run
   meals: [Meal!]!
-  didRun: Boolean! @default(value: "false")
+  didRun: Boolean @default(value: "false")
+  createdAt: DateTime!
+  user: User!
 }
 
 type Meal {
   id: ID! @unique
+  name: String!
   calories: Int @default(value: 0)
   proteins: Int @default(value: 0)
   carbs: Int @default(value: 0)

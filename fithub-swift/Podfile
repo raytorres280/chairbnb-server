@@ -4,8 +4,8 @@
 target 'fithub-swift' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
-  pod "GaugeKit"
   pod "FoldingCell"
+  pod "Apollo"
   # Pods for fithub-swift
 
 end

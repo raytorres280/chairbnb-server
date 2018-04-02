@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/raymondtorres/Developer/chairbnb-swift/fithub-swift/fithub-swift/CollectionViewCell.swift">
-   </FileRef>
-   <FileRef
       location = "group:fithub-swift.xcodeproj">
    </FileRef>
    <FileRef

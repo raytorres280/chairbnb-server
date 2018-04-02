@@ -5,6 +5,27 @@
 # Model Types
 #
 
+type Log implements Node {
+  id: ID!
+  totalWater: Int
+  caloriesBurned: Int
+  run(where: RunWhereInput): Run
+  meals(where: MealWhereInput, orderBy: MealOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Meal!]
+  didRun: Boolean
+  createdAt: DateTime!
+  user(where: UserWhereInput): User!
+}
+
+type Meal implements Node {
+  id: ID!
+  name: String!
+  calories: Int
+  proteins: Int
+  carbs: Int
+  fats: Int
+  logs(where: LogWhereInput, orderBy: LogOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Log!]
+}
+
 type Post implements Node {
   id: ID!
   createdAt: DateTime!
@@ -15,12 +36,18 @@ type Post implements Node {
   author(where: UserWhereInput): User!
 }
 
+type Run implements Node {
+  id: ID!
+  distance: Float!
+}
+
 type User implements Node {
   id: ID!
   email: String!
   password: String!
   name: String!
   posts(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Post!]
+  logs(where: LogWhereInput, orderBy: LogOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Log!]
 }
 
 
@@ -28,7 +55,19 @@ type User implements Node {
 # Other Types
 #
 
+type AggregateLog {
+  count: Int!
+}
+
+type AggregateMeal {
+  count: Int!
+}
+
 type AggregatePost {
+  count: Int!
+}
+
+type AggregateRun {
   count: Int!
 }
 
@@ -46,24 +85,785 @@ type BatchPayload {
 scalar DateTime
 
 """
+A connection to a list of items.
+"""
+type LogConnection {
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+  """
+  A list of edges.
+  """
+  edges: [LogEdge]!
+  aggregate: AggregateLog!
+}
+
+input LogCreateInput {
+  totalWater: Int
+  caloriesBurned: Int
+  didRun: Boolean
+  run: RunCreateOneInput
+  meals: MealCreateManyWithoutLogsInput
+  user: UserCreateOneWithoutLogsInput!
+}
+
+input LogCreateManyWithoutMealsInput {
+  create: [LogCreateWithoutMealsInput!]
+  connect: [LogWhereUniqueInput!]
+}
+
+input LogCreateManyWithoutUserInput {
+  create: [LogCreateWithoutUserInput!]
+  connect: [LogWhereUniqueInput!]
+}
+
+input LogCreateWithoutMealsInput {
+  totalWater: Int
+  caloriesBurned: Int
+  didRun: Boolean
+  run: RunCreateOneInput
+  user: UserCreateOneWithoutLogsInput!
+}
+
+input LogCreateWithoutUserInput {
+  totalWater: Int
+  caloriesBurned: Int
+  didRun: Boolean
+  run: RunCreateOneInput
+  meals: MealCreateManyWithoutLogsInput
+}
+
+"""
+An edge in a connection.
+"""
+type LogEdge {
+  """
+  The item at the end of the edge.
+  """
+  node: Log!
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+}
+
+enum LogOrderByInput {
+  id_ASC
+  id_DESC
+  totalWater_ASC
+  totalWater_DESC
+  caloriesBurned_ASC
+  caloriesBurned_DESC
+  didRun_ASC
+  didRun_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type LogPreviousValues {
+  id: ID!
+  totalWater: Int
+  caloriesBurned: Int
+  didRun: Boolean
+  createdAt: DateTime!
+}
+
+type LogSubscriptionPayload {
+  mutation: MutationType!
+  node: Log
+  updatedFields: [String!]
+  previousValues: LogPreviousValues
+}
+
+input LogSubscriptionWhereInput {
+  """
+  Logical AND on all given filters.
+  """
+  AND: [LogSubscriptionWhereInput!]
+  """
+  Logical OR on all given filters.
+  """
+  OR: [LogSubscriptionWhereInput!]
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: LogWhereInput
+}
+
+input LogUpdateInput {
+  totalWater: Int
+  caloriesBurned: Int
+  didRun: Boolean
+  run: RunUpdateOneInput
+  meals: MealUpdateManyWithoutLogsInput
+  user: UserUpdateOneWithoutLogsInput
+}
+
+input LogUpdateManyWithoutMealsInput {
+  create: [LogCreateWithoutMealsInput!]
+  connect: [LogWhereUniqueInput!]
+  disconnect: [LogWhereUniqueInput!]
+  delete: [LogWhereUniqueInput!]
+  update: [LogUpdateWithoutMealsInput!]
+  upsert: [LogUpsertWithoutMealsInput!]
+}
+
+input LogUpdateManyWithoutUserInput {
+  create: [LogCreateWithoutUserInput!]
+  connect: [LogWhereUniqueInput!]
+  disconnect: [LogWhereUniqueInput!]
+  delete: [LogWhereUniqueInput!]
+  update: [LogUpdateWithoutUserInput!]
+  upsert: [LogUpsertWithoutUserInput!]
+}
+
+input LogUpdateWithoutMealsDataInput {
+  totalWater: Int
+  caloriesBurned: Int
+  didRun: Boolean
+  run: RunUpdateOneInput
+  user: UserUpdateOneWithoutLogsInput
+}
+
+input LogUpdateWithoutMealsInput {
+  where: LogWhereUniqueInput!
+  data: LogUpdateWithoutMealsDataInput!
+}
+
+input LogUpdateWithoutUserDataInput {
+  totalWater: Int
+  caloriesBurned: Int
+  didRun: Boolean
+  run: RunUpdateOneInput
+  meals: MealUpdateManyWithoutLogsInput
+}
+
+input LogUpdateWithoutUserInput {
+  where: LogWhereUniqueInput!
+  data: LogUpdateWithoutUserDataInput!
+}
+
+input LogUpsertWithoutMealsInput {
+  where: LogWhereUniqueInput!
+  update: LogUpdateWithoutMealsDataInput!
+  create: LogCreateWithoutMealsInput!
+}
+
+input LogUpsertWithoutUserInput {
+  where: LogWhereUniqueInput!
+  update: LogUpdateWithoutUserDataInput!
+  create: LogCreateWithoutUserInput!
+}
+
+input LogWhereInput {
+  """
+  Logical AND on all given filters.
+  """
+  AND: [LogWhereInput!]
+  """
+  Logical OR on all given filters.
+  """
+  OR: [LogWhereInput!]
+  id: ID
+  """
+  All values that are not equal to given value.
+  """
+  id_not: ID
+  """
+  All values that are contained in given list.
+  """
+  id_in: [ID!]
+  """
+  All values that are not contained in given list.
+  """
+  id_not_in: [ID!]
+  """
+  All values less than the given value.
+  """
+  id_lt: ID
+  """
+  All values less than or equal the given value.
+  """
+  id_lte: ID
+  """
+  All values greater than the given value.
+  """
+  id_gt: ID
+  """
+  All values greater than or equal the given value.
+  """
+  id_gte: ID
+  """
+  All values containing the given string.
+  """
+  id_contains: ID
+  """
+  All values not containing the given string.
+  """
+  id_not_contains: ID
+  """
+  All values starting with the given string.
+  """
+  id_starts_with: ID
+  """
+  All values not starting with the given string.
+  """
+  id_not_starts_with: ID
+  """
+  All values ending with the given string.
+  """
+  id_ends_with: ID
+  """
+  All values not ending with the given string.
+  """
+  id_not_ends_with: ID
+  totalWater: Int
+  """
+  All values that are not equal to given value.
+  """
+  totalWater_not: Int
+  """
+  All values that are contained in given list.
+  """
+  totalWater_in: [Int!]
+  """
+  All values that are not contained in given list.
+  """
+  totalWater_not_in: [Int!]
+  """
+  All values less than the given value.
+  """
+  totalWater_lt: Int
+  """
+  All values less than or equal the given value.
+  """
+  totalWater_lte: Int
+  """
+  All values greater than the given value.
+  """
+  totalWater_gt: Int
+  """
+  All values greater than or equal the given value.
+  """
+  totalWater_gte: Int
+  caloriesBurned: Int
+  """
+  All values that are not equal to given value.
+  """
+  caloriesBurned_not: Int
+  """
+  All values that are contained in given list.
+  """
+  caloriesBurned_in: [Int!]
+  """
+  All values that are not contained in given list.
+  """
+  caloriesBurned_not_in: [Int!]
+  """
+  All values less than the given value.
+  """
+  caloriesBurned_lt: Int
+  """
+  All values less than or equal the given value.
+  """
+  caloriesBurned_lte: Int
+  """
+  All values greater than the given value.
+  """
+  caloriesBurned_gt: Int
+  """
+  All values greater than or equal the given value.
+  """
+  caloriesBurned_gte: Int
+  didRun: Boolean
+  """
+  All values that are not equal to given value.
+  """
+  didRun_not: Boolean
+  createdAt: DateTime
+  """
+  All values that are not equal to given value.
+  """
+  createdAt_not: DateTime
+  """
+  All values that are contained in given list.
+  """
+  createdAt_in: [DateTime!]
+  """
+  All values that are not contained in given list.
+  """
+  createdAt_not_in: [DateTime!]
+  """
+  All values less than the given value.
+  """
+  createdAt_lt: DateTime
+  """
+  All values less than or equal the given value.
+  """
+  createdAt_lte: DateTime
+  """
+  All values greater than the given value.
+  """
+  createdAt_gt: DateTime
+  """
+  All values greater than or equal the given value.
+  """
+  createdAt_gte: DateTime
+  run: RunWhereInput
+  meals_every: MealWhereInput
+  meals_some: MealWhereInput
+  meals_none: MealWhereInput
+  user: UserWhereInput
+}
+
+input LogWhereUniqueInput {
+  id: ID
+}
+
+"""
 The `Long` scalar type represents non-fractional signed whole numeric values.
 Long can represent values between -(2^63) and 2^63 - 1.
 """
 scalar Long
 
+"""
+A connection to a list of items.
+"""
+type MealConnection {
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+  """
+  A list of edges.
+  """
+  edges: [MealEdge]!
+  aggregate: AggregateMeal!
+}
+
+input MealCreateInput {
+  name: String!
+  calories: Int
+  proteins: Int
+  carbs: Int
+  fats: Int
+  logs: LogCreateManyWithoutMealsInput
+}
+
+input MealCreateManyWithoutLogsInput {
+  create: [MealCreateWithoutLogsInput!]
+  connect: [MealWhereUniqueInput!]
+}
+
+input MealCreateWithoutLogsInput {
+  name: String!
+  calories: Int
+  proteins: Int
+  carbs: Int
+  fats: Int
+}
+
+"""
+An edge in a connection.
+"""
+type MealEdge {
+  """
+  The item at the end of the edge.
+  """
+  node: Meal!
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+}
+
+enum MealOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  calories_ASC
+  calories_DESC
+  proteins_ASC
+  proteins_DESC
+  carbs_ASC
+  carbs_DESC
+  fats_ASC
+  fats_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type MealPreviousValues {
+  id: ID!
+  name: String!
+  calories: Int
+  proteins: Int
+  carbs: Int
+  fats: Int
+}
+
+type MealSubscriptionPayload {
+  mutation: MutationType!
+  node: Meal
+  updatedFields: [String!]
+  previousValues: MealPreviousValues
+}
+
+input MealSubscriptionWhereInput {
+  """
+  Logical AND on all given filters.
+  """
+  AND: [MealSubscriptionWhereInput!]
+  """
+  Logical OR on all given filters.
+  """
+  OR: [MealSubscriptionWhereInput!]
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: MealWhereInput
+}
+
+input MealUpdateInput {
+  name: String
+  calories: Int
+  proteins: Int
+  carbs: Int
+  fats: Int
+  logs: LogUpdateManyWithoutMealsInput
+}
+
+input MealUpdateManyWithoutLogsInput {
+  create: [MealCreateWithoutLogsInput!]
+  connect: [MealWhereUniqueInput!]
+  disconnect: [MealWhereUniqueInput!]
+  delete: [MealWhereUniqueInput!]
+  update: [MealUpdateWithoutLogsInput!]
+  upsert: [MealUpsertWithoutLogsInput!]
+}
+
+input MealUpdateWithoutLogsDataInput {
+  name: String
+  calories: Int
+  proteins: Int
+  carbs: Int
+  fats: Int
+}
+
+input MealUpdateWithoutLogsInput {
+  where: MealWhereUniqueInput!
+  data: MealUpdateWithoutLogsDataInput!
+}
+
+input MealUpsertWithoutLogsInput {
+  where: MealWhereUniqueInput!
+  update: MealUpdateWithoutLogsDataInput!
+  create: MealCreateWithoutLogsInput!
+}
+
+input MealWhereInput {
+  """
+  Logical AND on all given filters.
+  """
+  AND: [MealWhereInput!]
+  """
+  Logical OR on all given filters.
+  """
+  OR: [MealWhereInput!]
+  id: ID
+  """
+  All values that are not equal to given value.
+  """
+  id_not: ID
+  """
+  All values that are contained in given list.
+  """
+  id_in: [ID!]
+  """
+  All values that are not contained in given list.
+  """
+  id_not_in: [ID!]
+  """
+  All values less than the given value.
+  """
+  id_lt: ID
+  """
+  All values less than or equal the given value.
+  """
+  id_lte: ID
+  """
+  All values greater than the given value.
+  """
+  id_gt: ID
+  """
+  All values greater than or equal the given value.
+  """
+  id_gte: ID
+  """
+  All values containing the given string.
+  """
+  id_contains: ID
+  """
+  All values not containing the given string.
+  """
+  id_not_contains: ID
+  """
+  All values starting with the given string.
+  """
+  id_starts_with: ID
+  """
+  All values not starting with the given string.
+  """
+  id_not_starts_with: ID
+  """
+  All values ending with the given string.
+  """
+  id_ends_with: ID
+  """
+  All values not ending with the given string.
+  """
+  id_not_ends_with: ID
+  name: String
+  """
+  All values that are not equal to given value.
+  """
+  name_not: String
+  """
+  All values that are contained in given list.
+  """
+  name_in: [String!]
+  """
+  All values that are not contained in given list.
+  """
+  name_not_in: [String!]
+  """
+  All values less than the given value.
+  """
+  name_lt: String
+  """
+  All values less than or equal the given value.
+  """
+  name_lte: String
+  """
+  All values greater than the given value.
+  """
+  name_gt: String
+  """
+  All values greater than or equal the given value.
+  """
+  name_gte: String
+  """
+  All values containing the given string.
+  """
+  name_contains: String
+  """
+  All values not containing the given string.
+  """
+  name_not_contains: String
+  """
+  All values starting with the given string.
+  """
+  name_starts_with: String
+  """
+  All values not starting with the given string.
+  """
+  name_not_starts_with: String
+  """
+  All values ending with the given string.
+  """
+  name_ends_with: String
+  """
+  All values not ending with the given string.
+  """
+  name_not_ends_with: String
+  calories: Int
+  """
+  All values that are not equal to given value.
+  """
+  calories_not: Int
+  """
+  All values that are contained in given list.
+  """
+  calories_in: [Int!]
+  """
+  All values that are not contained in given list.
+  """
+  calories_not_in: [Int!]
+  """
+  All values less than the given value.
+  """
+  calories_lt: Int
+  """
+  All values less than or equal the given value.
+  """
+  calories_lte: Int
+  """
+  All values greater than the given value.
+  """
+  calories_gt: Int
+  """
+  All values greater than or equal the given value.
+  """
+  calories_gte: Int
+  proteins: Int
+  """
+  All values that are not equal to given value.
+  """
+  proteins_not: Int
+  """
+  All values that are contained in given list.
+  """
+  proteins_in: [Int!]
+  """
+  All values that are not contained in given list.
+  """
+  proteins_not_in: [Int!]
+  """
+  All values less than the given value.
+  """
+  proteins_lt: Int
+  """
+  All values less than or equal the given value.
+  """
+  proteins_lte: Int
+  """
+  All values greater than the given value.
+  """
+  proteins_gt: Int
+  """
+  All values greater than or equal the given value.
+  """
+  proteins_gte: Int
+  carbs: Int
+  """
+  All values that are not equal to given value.
+  """
+  carbs_not: Int
+  """
+  All values that are contained in given list.
+  """
+  carbs_in: [Int!]
+  """
+  All values that are not contained in given list.
+  """
+  carbs_not_in: [Int!]
+  """
+  All values less than the given value.
+  """
+  carbs_lt: Int
+  """
+  All values less than or equal the given value.
+  """
+  carbs_lte: Int
+  """
+  All values greater than the given value.
+  """
+  carbs_gt: Int
+  """
+  All values greater than or equal the given value.
+  """
+  carbs_gte: Int
+  fats: Int
+  """
+  All values that are not equal to given value.
+  """
+  fats_not: Int
+  """
+  All values that are contained in given list.
+  """
+  fats_in: [Int!]
+  """
+  All values that are not contained in given list.
+  """
+  fats_not_in: [Int!]
+  """
+  All values less than the given value.
+  """
+  fats_lt: Int
+  """
+  All values less than or equal the given value.
+  """
+  fats_lte: Int
+  """
+  All values greater than the given value.
+  """
+  fats_gt: Int
+  """
+  All values greater than or equal the given value.
+  """
+  fats_gte: Int
+  logs_every: LogWhereInput
+  logs_some: LogWhereInput
+  logs_none: LogWhereInput
+}
+
+input MealWhereUniqueInput {
+  id: ID
+}
+
 type Mutation {
   createPost(data: PostCreateInput!): Post!
   createUser(data: UserCreateInput!): User!
+  createLog(data: LogCreateInput!): Log!
+  createMeal(data: MealCreateInput!): Meal!
+  createRun(data: RunCreateInput!): Run!
   updatePost(data: PostUpdateInput!, where: PostWhereUniqueInput!): Post
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+  updateLog(data: LogUpdateInput!, where: LogWhereUniqueInput!): Log
+  updateMeal(data: MealUpdateInput!, where: MealWhereUniqueInput!): Meal
+  updateRun(data: RunUpdateInput!, where: RunWhereUniqueInput!): Run
   deletePost(where: PostWhereUniqueInput!): Post
   deleteUser(where: UserWhereUniqueInput!): User
+  deleteLog(where: LogWhereUniqueInput!): Log
+  deleteMeal(where: MealWhereUniqueInput!): Meal
+  deleteRun(where: RunWhereUniqueInput!): Run
   upsertPost(where: PostWhereUniqueInput!, create: PostCreateInput!, update: PostUpdateInput!): Post!
   upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
+  upsertLog(where: LogWhereUniqueInput!, create: LogCreateInput!, update: LogUpdateInput!): Log!
+  upsertMeal(where: MealWhereUniqueInput!, create: MealCreateInput!, update: MealUpdateInput!): Meal!
+  upsertRun(where: RunWhereUniqueInput!, create: RunCreateInput!, update: RunUpdateInput!): Run!
   updateManyPosts(data: PostUpdateInput!, where: PostWhereInput!): BatchPayload!
   updateManyUsers(data: UserUpdateInput!, where: UserWhereInput!): BatchPayload!
+  updateManyLogs(data: LogUpdateInput!, where: LogWhereInput!): BatchPayload!
+  updateManyMeals(data: MealUpdateInput!, where: MealWhereInput!): BatchPayload!
+  updateManyRuns(data: RunUpdateInput!, where: RunWhereInput!): BatchPayload!
   deleteManyPosts(where: PostWhereInput!): BatchPayload!
   deleteManyUsers(where: UserWhereInput!): BatchPayload!
+  deleteManyLogs(where: LogWhereInput!): BatchPayload!
+  deleteManyMeals(where: MealWhereInput!): BatchPayload!
+  deleteManyRuns(where: RunWhereInput!): BatchPayload!
 }
 
 enum MutationType {
@@ -484,10 +1284,19 @@ input PostWhereUniqueInput {
 type Query {
   posts(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Post]!
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
+  logs(where: LogWhereInput, orderBy: LogOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Log]!
+  meals(where: MealWhereInput, orderBy: MealOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Meal]!
+  runs(where: RunWhereInput, orderBy: RunOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Run]!
   post(where: PostWhereUniqueInput!): Post
   user(where: UserWhereUniqueInput!): User
+  log(where: LogWhereUniqueInput!): Log
+  meal(where: MealWhereUniqueInput!): Meal
+  run(where: RunWhereUniqueInput!): Run
   postsConnection(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PostConnection!
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
+  logsConnection(where: LogWhereInput, orderBy: LogOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): LogConnection!
+  mealsConnection(where: MealWhereInput, orderBy: MealOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): MealConnection!
+  runsConnection(where: RunWhereInput, orderBy: RunOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): RunConnection!
   """
   Fetches an object given its ID
   """
@@ -497,9 +1306,209 @@ type Query {
   id: ID!): Node
 }
 
+"""
+A connection to a list of items.
+"""
+type RunConnection {
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+  """
+  A list of edges.
+  """
+  edges: [RunEdge]!
+  aggregate: AggregateRun!
+}
+
+input RunCreateInput {
+  distance: Float!
+}
+
+input RunCreateOneInput {
+  create: RunCreateInput
+  connect: RunWhereUniqueInput
+}
+
+"""
+An edge in a connection.
+"""
+type RunEdge {
+  """
+  The item at the end of the edge.
+  """
+  node: Run!
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+}
+
+enum RunOrderByInput {
+  id_ASC
+  id_DESC
+  distance_ASC
+  distance_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type RunPreviousValues {
+  id: ID!
+  distance: Float!
+}
+
+type RunSubscriptionPayload {
+  mutation: MutationType!
+  node: Run
+  updatedFields: [String!]
+  previousValues: RunPreviousValues
+}
+
+input RunSubscriptionWhereInput {
+  """
+  Logical AND on all given filters.
+  """
+  AND: [RunSubscriptionWhereInput!]
+  """
+  Logical OR on all given filters.
+  """
+  OR: [RunSubscriptionWhereInput!]
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: RunWhereInput
+}
+
+input RunUpdateInput {
+  distance: Float
+}
+
+input RunUpdateOneInput {
+  create: RunCreateInput
+  connect: RunWhereUniqueInput
+  disconnect: RunWhereUniqueInput
+  delete: RunWhereUniqueInput
+}
+
+input RunWhereInput {
+  """
+  Logical AND on all given filters.
+  """
+  AND: [RunWhereInput!]
+  """
+  Logical OR on all given filters.
+  """
+  OR: [RunWhereInput!]
+  id: ID
+  """
+  All values that are not equal to given value.
+  """
+  id_not: ID
+  """
+  All values that are contained in given list.
+  """
+  id_in: [ID!]
+  """
+  All values that are not contained in given list.
+  """
+  id_not_in: [ID!]
+  """
+  All values less than the given value.
+  """
+  id_lt: ID
+  """
+  All values less than or equal the given value.
+  """
+  id_lte: ID
+  """
+  All values greater than the given value.
+  """
+  id_gt: ID
+  """
+  All values greater than or equal the given value.
+  """
+  id_gte: ID
+  """
+  All values containing the given string.
+  """
+  id_contains: ID
+  """
+  All values not containing the given string.
+  """
+  id_not_contains: ID
+  """
+  All values starting with the given string.
+  """
+  id_starts_with: ID
+  """
+  All values not starting with the given string.
+  """
+  id_not_starts_with: ID
+  """
+  All values ending with the given string.
+  """
+  id_ends_with: ID
+  """
+  All values not ending with the given string.
+  """
+  id_not_ends_with: ID
+  distance: Float
+  """
+  All values that are not equal to given value.
+  """
+  distance_not: Float
+  """
+  All values that are contained in given list.
+  """
+  distance_in: [Float!]
+  """
+  All values that are not contained in given list.
+  """
+  distance_not_in: [Float!]
+  """
+  All values less than the given value.
+  """
+  distance_lt: Float
+  """
+  All values less than or equal the given value.
+  """
+  distance_lte: Float
+  """
+  All values greater than the given value.
+  """
+  distance_gt: Float
+  """
+  All values greater than or equal the given value.
+  """
+  distance_gte: Float
+}
+
+input RunWhereUniqueInput {
+  id: ID
+}
+
 type Subscription {
   post(where: PostSubscriptionWhereInput): PostSubscriptionPayload
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
+  log(where: LogSubscriptionWhereInput): LogSubscriptionPayload
+  meal(where: MealSubscriptionWhereInput): MealSubscriptionPayload
+  run(where: RunSubscriptionWhereInput): RunSubscriptionPayload
 }
 
 """
@@ -522,6 +1531,12 @@ input UserCreateInput {
   password: String!
   name: String!
   posts: PostCreateManyWithoutAuthorInput
+  logs: LogCreateManyWithoutUserInput
+}
+
+input UserCreateOneWithoutLogsInput {
+  create: UserCreateWithoutLogsInput
+  connect: UserWhereUniqueInput
 }
 
 input UserCreateOneWithoutPostsInput {
@@ -529,10 +1544,18 @@ input UserCreateOneWithoutPostsInput {
   connect: UserWhereUniqueInput
 }
 
+input UserCreateWithoutLogsInput {
+  email: String!
+  password: String!
+  name: String!
+  posts: PostCreateManyWithoutAuthorInput
+}
+
 input UserCreateWithoutPostsInput {
   email: String!
   password: String!
   name: String!
+  logs: LogCreateManyWithoutUserInput
 }
 
 """
@@ -611,6 +1634,16 @@ input UserUpdateInput {
   password: String
   name: String
   posts: PostUpdateManyWithoutAuthorInput
+  logs: LogUpdateManyWithoutUserInput
+}
+
+input UserUpdateOneWithoutLogsInput {
+  create: UserCreateWithoutLogsInput
+  connect: UserWhereUniqueInput
+  disconnect: UserWhereUniqueInput
+  delete: UserWhereUniqueInput
+  update: UserUpdateWithoutLogsInput
+  upsert: UserUpsertWithoutLogsInput
 }
 
 input UserUpdateOneWithoutPostsInput {
@@ -622,15 +1655,34 @@ input UserUpdateOneWithoutPostsInput {
   upsert: UserUpsertWithoutPostsInput
 }
 
+input UserUpdateWithoutLogsDataInput {
+  email: String
+  password: String
+  name: String
+  posts: PostUpdateManyWithoutAuthorInput
+}
+
+input UserUpdateWithoutLogsInput {
+  where: UserWhereUniqueInput!
+  data: UserUpdateWithoutLogsDataInput!
+}
+
 input UserUpdateWithoutPostsDataInput {
   email: String
   password: String
   name: String
+  logs: LogUpdateManyWithoutUserInput
 }
 
 input UserUpdateWithoutPostsInput {
   where: UserWhereUniqueInput!
   data: UserUpdateWithoutPostsDataInput!
+}
+
+input UserUpsertWithoutLogsInput {
+  where: UserWhereUniqueInput!
+  update: UserUpdateWithoutLogsDataInput!
+  create: UserCreateWithoutLogsInput!
 }
 
 input UserUpsertWithoutPostsInput {
@@ -863,6 +1915,9 @@ input UserWhereInput {
   posts_every: PostWhereInput
   posts_some: PostWhereInput
   posts_none: PostWhereInput
+  logs_every: LogWhereInput
+  logs_some: LogWhereInput
+  logs_none: LogWhereInput
 }
 
 input UserWhereUniqueInput {

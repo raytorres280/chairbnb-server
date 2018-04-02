@@ -1,15 +1,17 @@
 PODS:
+  - Apollo (0.8.0):
+    - Apollo/Core (= 0.8.0)
+  - Apollo/Core (0.8.0)
   - FoldingCell (3.0.5)
-  - GaugeKit (0.4.5)
 
 DEPENDENCIES:
+  - Apollo
   - FoldingCell
-  - GaugeKit
 
 SPEC CHECKSUMS:
+  Apollo: 66e0f52289551545adb7ecdd994e713fdbae26eb
   FoldingCell: 18daed710910823bc8457c3fba076a2408f21f0e
-  GaugeKit: 7872069a8aed2d26b17fca110fe1ab59722f8a33
 
-PODFILE CHECKSUM: bd6eb2743c9d6c4b302ff1d9c05465dc5aeacfa6
+PODFILE CHECKSUM: 93085a6ec82500849e009cf55be80b3180773aba
 
 COCOAPODS: 1.4.0

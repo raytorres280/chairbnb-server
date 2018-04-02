@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6E698D425CF8AF9015F09CC560917E2E"
+               BlueprintIdentifier = "410E7A9C5E7E88B3188FBF84A52071D9"
                BuildableName = "Pods_fithub_swift.framework"
                BlueprintName = "Pods-fithub-swift"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -26,7 +26,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
@@ -37,7 +36,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -47,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6E698D425CF8AF9015F09CC560917E2E"
+            BlueprintIdentifier = "410E7A9C5E7E88B3188FBF84A52071D9"
             BuildableName = "Pods_fithub_swift.framework"
             BlueprintName = "Pods-fithub-swift"
             ReferencedContainer = "container:Pods.xcodeproj">

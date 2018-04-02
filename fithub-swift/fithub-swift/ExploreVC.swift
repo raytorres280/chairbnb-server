@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ExploreVC: UIViewController {
+class ExploreVC: UIViewController, UICollectionViewDataSource {
     
     @IBOutlet weak var scrollContainer: UIScrollView!
     @IBAction func onButtonPress(_ sender: Any) {
@@ -21,6 +21,7 @@ class ExploreVC: UIViewController {
         super.viewDidLoad()
         print("listview loaded..")
         
+        logCollection.dataSource = self
         
         let newView = UIView()
         newView.backgroundColor = UIColor.blue
@@ -43,5 +44,14 @@ class ExploreVC: UIViewController {
             
         }.resume()
         
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = logCollection.dequeueReusableCell(withReuseIdentifier: "customCell", for: indexPath) as! CollectionViewCell
+        cell.logLabel.text = "hello world"
+        return cell
     }
 }

@@ -1,0 +1,10 @@
+query LogsByUserId($id: ID!) {
+    logsByUserId(id: $id) {
+        id
+        meals {
+            id
+            name
+        }
+    }
+}
+

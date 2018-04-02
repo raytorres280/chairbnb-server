@@ -26,6 +26,20 @@ const Query = {
     const id = getUserId(ctx)
     return ctx.db.query.user({ where: { id } }, info)
   },
+
+  logsByUserId(parent, { id }, ctx, info) {
+    return ctx.db.query.logs({
+      where: {
+        user: {
+          id
+        }
+      }
+    }, info)
+  },
+
+  meals(parent, params, ctx, info) {
+    return ctx.db.query.meals({}, info)
+  }
 }
 
 module.exports = { Query }

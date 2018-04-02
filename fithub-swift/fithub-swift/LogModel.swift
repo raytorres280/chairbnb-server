@@ -16,8 +16,10 @@ class Log {
     var totalFats: Float = 0.0
     var totalActivity: Float = 0
     var totalWater: Int = 0
+    var meals: [String: Meal] = [:]
     let logDate: Date
-    init(id: Int, totalCalories: Float?, totalProteins: Float, totalCarbs: Float, totalFats: Float, totalActivity: Float, totalWater: Int, logDate: Date = Date()) {
+    
+    init(id: Int, totalCalories: Float?, totalProteins: Float, totalCarbs: Float, totalFats: Float, totalActivity: Float, totalWater: Int, logDate: Date = Date(), meals: [Meal]) {
         self.id = id
         self.totalCalories = totalCalories!
         self.totalProteins = totalProteins
