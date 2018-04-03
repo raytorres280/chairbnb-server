@@ -94,6 +94,8 @@
 		9E6996221FB57B590057A43A /* fithub-swift */ = {
 			isa = PBXGroup;
 			children = (
+				9EECF7212072E716002D180D /* ViewControllers */,
+				9EECF7202072E70F002D180D /* Models */,
 				9EECF71C2072D322002D180D /* schema.json */,
 				9EECF71A2072CD17002D180D /* API.swift */,
 				9E8184FA2072065E00A95CD6 /* Logs.graphql */,
@@ -103,13 +105,27 @@
 				9E69962B1FB57B5A0057A43A /* Main.storyboard */,
 				9E0294E91FD4EBFC00101C91 /* ExploreVC.swift */,
 				9E02E9DE1FB7A6E400F6821C /* LogModel.swift */,
+				9EA92D1B207173590069317C /* MealModel.swift */,
 				9E69962E1FB57B5A0057A43A /* Assets.xcassets */,
 				9E6996301FB57B5A0057A43A /* LaunchScreen.storyboard */,
 				9E6996331FB57B5A0057A43A /* Info.plist */,
 				9E6996411FB58EE80057A43A /* CircleModel.swift */,
-				9EA92D1B207173590069317C /* MealModel.swift */,
 			);
 			path = "fithub-swift";
+			sourceTree = "<group>";
+		};
+		9EECF7202072E70F002D180D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9EECF7212072E716002D180D /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

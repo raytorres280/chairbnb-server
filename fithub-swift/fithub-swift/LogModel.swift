@@ -9,24 +9,20 @@
 import Foundation
 
 class Log {
-    var id: Int = 0
-    var totalCalories: Float = 0.0
-    var totalProteins: Float = 0.0
-    var totalCarbs: Float = 0.0
-    var totalFats: Float = 0.0
-    var totalActivity: Float = 0
+    var id: String
+//    var totalCalories: Float = 0.0
+//    var totalProteins: Float = 0.0
+//    var totalCarbs: Float = 0.0
+//    var totalFats: Float = 0.0
+//    var totalActivity: Float = 0
     var totalWater: Int = 0
     var meals: [String: Meal] = [:]
     let logDate: Date
     
-    init(id: Int, totalCalories: Float?, totalProteins: Float, totalCarbs: Float, totalFats: Float, totalActivity: Float, totalWater: Int, logDate: Date = Date(), meals: [Meal]) {
+    init(id: String, totalWater: Int?, logDate: Date = Date(), meals: [String: Meal]?) {
         self.id = id
-        self.totalCalories = totalCalories!
-        self.totalProteins = totalProteins
-        self.totalCarbs = totalCarbs
-        self.totalFats = totalFats
-        self.totalActivity = totalActivity
-        self.totalWater = totalWater
+        self.totalWater = (totalWater)!
         self.logDate = logDate
+        self.meals = (meals)!
     }
 }

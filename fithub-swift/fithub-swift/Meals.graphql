@@ -2,5 +2,9 @@ query Meals {
     meals {
         id
         name
+        calories
+        proteins
+        carbs
+        fats
     }
 }

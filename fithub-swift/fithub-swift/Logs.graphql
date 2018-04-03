@@ -1,5 +1,15 @@
 query LogsByUserId($id: ID!) {
     logs: logsByUserId(id: $id) {
         id
+        createdAt
+        meals {
+            id
+            name
+            calories
+            proteins
+            carbs
+            fats
+        }
+        totalWater
     }
 }
