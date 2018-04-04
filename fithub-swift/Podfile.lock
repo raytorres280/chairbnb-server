@@ -2,16 +2,21 @@ PODS:
   - Apollo (0.8.0):
     - Apollo/Core (= 0.8.0)
   - Apollo/Core (0.8.0)
+  - Charts (3.1.0):
+    - Charts/Core (= 3.1.0)
+  - Charts/Core (3.1.0)
   - FoldingCell (3.0.5)
 
 DEPENDENCIES:
   - Apollo
+  - Charts
   - FoldingCell
 
 SPEC CHECKSUMS:
   Apollo: 66e0f52289551545adb7ecdd994e713fdbae26eb
+  Charts: 0b0c96f6118b6ce63f11adbcaa3b31045ee4d772
   FoldingCell: 18daed710910823bc8457c3fba076a2408f21f0e
 
-PODFILE CHECKSUM: 93085a6ec82500849e009cf55be80b3180773aba
+PODFILE CHECKSUM: e2897e32d0fb01aecb2f6ec06b93fac758e3302c
 
 COCOAPODS: 1.4.0

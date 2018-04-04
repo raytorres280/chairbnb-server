@@ -22,81 +22,69 @@ mutation {
     id
   }
 
-  log1: createLog(data: {
-    run: {
-      create: {
-        distance: 2.5
-      }
-    }
-    meals: {
+  user: createUser(data: {
+    email: "test@aol.com"
+    password: "1234566"
+    name: "john doe"
+    logs: {
       create: [{
-        name: "hot dog"
-        calories: 400
-        proteins: 15
-        carbs: 25
-        fats: 10
+        run: {
+          create: {
+            distance: 2.5
+          }
+        }
+        meals: {
+          create: [{
+            name: "hot dog"
+            calories: 400
+            proteins: 15
+            carbs: 25
+            fats: 10
+          }, {
+            name: "pizza"
+            calories: 600
+            proteins: 15
+            carbs: 35
+            fats: 24
+          }, {
+            name: "salad"
+            calories: 250
+            proteins: 8
+            carbs: 7
+            fats: 4
+          }]
+        }
       }, {
-        name: "pizza"
-        calories: 600
-        proteins: 15
-        carbs: 35
-        fats: 24
-      }, {
-        name: "salad"
-        calories: 250
-        proteins: 8
-        carbs: 7
-        fats: 4
+        run: {
+          create: {
+            distance: 4
+          }
+        }
+        meals: {
+          create: [{
+            name: "chipotle bowl"
+            calories: 750
+            proteins: 50
+            carbs: 75
+            fats: 20
+          }, {
+            name: "blaze sausage pizza"
+            calories: 840
+            proteins: 30
+            carbs: 80
+            fats: 42
+          }]
+        }
       }]
-    }
-    user: {
-      create: {
-        email: "test@aol.com"
-        password: "123"
-        name: "john doe"
-      }
     }
   }) {
     id
-    meals {
+    logs{
       id
-      name
-    }
-  }
-
-  log2: createLog(data: {
-    run: {
-      create: {
-        distance: 4
+      meals {
+        id
+        name
       }
-    }
-    meals: {
-      create: [{
-        name: "chipotle bowl"
-        calories: 750
-        proteins: 50
-        carbs: 75
-        fats: 20
-      }, {
-        name: "blaze sausage pizza"
-        calories: 840
-        proteins: 30
-        carbs: 80
-        fats: 42
-      }]
-    }
-    user: {
-      create: {
-        email: "test@gmail.com"
-        password: "123"
-        name: "nobody"
-      }
-    }
-  }) {
-    id
-    meals {
-      id
-      name
     }
   }
 }

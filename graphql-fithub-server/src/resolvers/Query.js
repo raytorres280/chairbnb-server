@@ -36,6 +36,10 @@ const Query = {
       }
     }, info)
   },
+  
+  logs(parent, args, ctx, info) {
+    return ctx.db.query.logs({}, info)
+  },
 
   meals(parent, params, ctx, info) {
     return ctx.db.query.meals({}, info)

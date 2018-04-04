@@ -8,14 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		9E0294EA1FD4EBFC00101C91 /* ExploreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0294E91FD4EBFC00101C91 /* ExploreVC.swift */; };
-		9E02E9DF1FB7A6E400F6821C /* LogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E02E9DE1FB7A6E400F6821C /* LogModel.swift */; };
+		9E02E9DF1FB7A6E400F6821C /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E02E9DE1FB7A6E400F6821C /* Log.swift */; };
 		9E6996241FB57B590057A43A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6996231FB57B590057A43A /* AppDelegate.swift */; };
 		9E69962D1FB57B5A0057A43A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E69962B1FB57B5A0057A43A /* Main.storyboard */; };
 		9E69962F1FB57B5A0057A43A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E69962E1FB57B5A0057A43A /* Assets.xcassets */; };
 		9E6996321FB57B5A0057A43A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E6996301FB57B5A0057A43A /* LaunchScreen.storyboard */; };
 		9E6996421FB58EE80057A43A /* CircleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6996411FB58EE80057A43A /* CircleModel.swift */; };
 		9E8184FB2072065E00A95CD6 /* Logs.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 9E8184FA2072065E00A95CD6 /* Logs.graphql */; };
-		9EA92D1C207173590069317C /* MealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA92D1B207173590069317C /* MealModel.swift */; };
+		9EA92D1C207173590069317C /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA92D1B207173590069317C /* Meal.swift */; };
 		9EECF71B2072CD17002D180D /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EECF71A2072CD17002D180D /* API.swift */; };
 		9EECF71D2072D323002D180D /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 9EECF71C2072D322002D180D /* schema.json */; };
 		9EECF71F2072D412002D180D /* Meals.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 9EECF71E2072D412002D180D /* Meals.graphql */; };
@@ -27,7 +27,7 @@
 		0EC91C4B52B2C4F276389A3B /* Pods-fithub-swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fithub-swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-fithub-swift/Pods-fithub-swift.release.xcconfig"; sourceTree = "<group>"; };
 		3C78F57B2911EB5D9C7B1086 /* Pods_fithub_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fithub_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E0294E91FD4EBFC00101C91 /* ExploreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreVC.swift; sourceTree = "<group>"; };
-		9E02E9DE1FB7A6E400F6821C /* LogModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogModel.swift; sourceTree = "<group>"; };
+		9E02E9DE1FB7A6E400F6821C /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		9E6996201FB57B590057A43A /* fithub-swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "fithub-swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E6996231FB57B590057A43A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E69962C1FB57B5A0057A43A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -36,7 +36,7 @@
 		9E6996331FB57B5A0057A43A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9E6996411FB58EE80057A43A /* CircleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleModel.swift; sourceTree = "<group>"; };
 		9E8184FA2072065E00A95CD6 /* Logs.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Logs.graphql; sourceTree = "<group>"; };
-		9EA92D1B207173590069317C /* MealModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealModel.swift; sourceTree = "<group>"; };
+		9EA92D1B207173590069317C /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		9EECF71A2072CD17002D180D /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		9EECF71C2072D322002D180D /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		9EECF71E2072D412002D180D /* Meals.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Meals.graphql; sourceTree = "<group>"; };
@@ -94,22 +94,16 @@
 		9E6996221FB57B590057A43A /* fithub-swift */ = {
 			isa = PBXGroup;
 			children = (
+				9EECF7232073891A002D180D /* queries */,
 				9EECF7212072E716002D180D /* ViewControllers */,
 				9EECF7202072E70F002D180D /* Models */,
 				9EECF71C2072D322002D180D /* schema.json */,
 				9EECF71A2072CD17002D180D /* API.swift */,
-				9E8184FA2072065E00A95CD6 /* Logs.graphql */,
-				9EECF71E2072D412002D180D /* Meals.graphql */,
-				9EF8C6E4206F7AB80085BD19 /* CollectionViewCell.swift */,
 				9E6996231FB57B590057A43A /* AppDelegate.swift */,
 				9E69962B1FB57B5A0057A43A /* Main.storyboard */,
-				9E0294E91FD4EBFC00101C91 /* ExploreVC.swift */,
-				9E02E9DE1FB7A6E400F6821C /* LogModel.swift */,
-				9EA92D1B207173590069317C /* MealModel.swift */,
 				9E69962E1FB57B5A0057A43A /* Assets.xcassets */,
 				9E6996301FB57B5A0057A43A /* LaunchScreen.storyboard */,
 				9E6996331FB57B5A0057A43A /* Info.plist */,
-				9E6996411FB58EE80057A43A /* CircleModel.swift */,
 			);
 			path = "fithub-swift";
 			sourceTree = "<group>";
@@ -117,6 +111,9 @@
 		9EECF7202072E70F002D180D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9E6996411FB58EE80057A43A /* CircleModel.swift */,
+				9E02E9DE1FB7A6E400F6821C /* Log.swift */,
+				9EA92D1B207173590069317C /* Meal.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -124,8 +121,19 @@
 		9EECF7212072E716002D180D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				9E0294E91FD4EBFC00101C91 /* ExploreVC.swift */,
+				9EF8C6E4206F7AB80085BD19 /* CollectionViewCell.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		9EECF7232073891A002D180D /* queries */ = {
+			isa = PBXGroup;
+			children = (
+				9E8184FA2072065E00A95CD6 /* Logs.graphql */,
+				9EECF71E2072D412002D180D /* Meals.graphql */,
+			);
+			path = queries;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,11 +266,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-fithub-swift/Pods-fithub-swift-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Apollo/Apollo.framework",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/FoldingCell/FoldingCell.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Apollo.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FoldingCell.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -278,10 +288,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9EF8C6E5206F7AB80085BD19 /* CollectionViewCell.swift in Sources */,
-				9E02E9DF1FB7A6E400F6821C /* LogModel.swift in Sources */,
+				9E02E9DF1FB7A6E400F6821C /* Log.swift in Sources */,
 				9E0294EA1FD4EBFC00101C91 /* ExploreVC.swift in Sources */,
 				9E6996421FB58EE80057A43A /* CircleModel.swift in Sources */,
-				9EA92D1C207173590069317C /* MealModel.swift in Sources */,
+				9EA92D1C207173590069317C /* Meal.swift in Sources */,
 				9E6996241FB57B590057A43A /* AppDelegate.swift in Sources */,
 				9EECF71B2072CD17002D180D /* API.swift in Sources */,
 			);

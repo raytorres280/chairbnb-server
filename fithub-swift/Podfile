@@ -6,6 +6,7 @@ target 'fithub-swift' do
   use_frameworks!
   pod "FoldingCell"
   pod "Apollo"
+  pod "Charts"
   # Pods for fithub-swift
 
 end

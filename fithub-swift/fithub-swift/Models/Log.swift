@@ -25,4 +25,21 @@ class Log {
         self.logDate = logDate
         self.meals = (meals)!
     }
+    
+    func calculateCalories() -> Int {
+        return self.meals.reduce(0, { counter,meal in meal.value.calories + counter })
+    }
+    
+    func calculateProteins() -> Int {
+        return self.meals.reduce(0, { counter,meal in meal.value.proteins + counter })
+    }
+    
+    func calculateCarbs() -> Int {
+        return self.meals.reduce(0, { counter,meal in meal.value.carbs + counter })
+    }
+    
+    func calculateFats() -> Int {
+        return self.meals.reduce(0, { counter,meal in meal.value.fats + counter })
+    }
+    
 }

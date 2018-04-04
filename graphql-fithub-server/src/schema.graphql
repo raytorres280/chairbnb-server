@@ -5,6 +5,7 @@ type Query {
   drafts: [Post!]!
   post(id: ID!): Post
   me: User
+  logs: [Log!]!
   logsByUserId(id: ID!): [Log!]!
   meals: [Meal!]!
 }
