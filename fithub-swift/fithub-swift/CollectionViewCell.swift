@@ -6,9 +6,9 @@
 //
 
 import UIKit
-import Charts
 
 class CollectionViewCell: UICollectionViewCell {
+    
     
     @IBOutlet weak var logDateLabel: UILabel!
     var proteins: Int = 0
@@ -25,7 +25,7 @@ class CollectionViewCell: UICollectionViewCell {
 //        chart.frame.size = CGSize(width: 150, height: 150)
 //        self.chart.data = chartData
         print("updating cell data...")
-//        print(self.proteins)
+        print(self.proteins)
         
         
         

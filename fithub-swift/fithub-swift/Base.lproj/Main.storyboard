@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -95,56 +96,68 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="300" height="132"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6fS-fg-R6j" userLabel="LogDateLabel">
-                                                            <rect key="frame" x="12.000000000000078" y="20" width="36" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6fS-fg-R6j" userLabel="LogDateLabel">
+                                                            <rect key="frame" x="12" y="20" width="36" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="center" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="2WM-dx-he5">
-                                                            <rect key="frame" x="138" y="10" width="150.33333333333334" height="102"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="2WM-dx-he5">
+                                                            <rect key="frame" x="146" y="18" width="151" height="102"/>
                                                             <subviews>
-                                                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" ambiguous="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="B5O-np-7Vc" userLabel="ProteinProgress">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="150.33333333333334" height="2"/>
+                                                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="B5O-np-7Vc" userLabel="ProteinProgress">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="151" height="2"/>
                                                                     <viewLayoutGuide key="safeArea" id="gHf-C2-LLd"/>
                                                                 </progressView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Proteins" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Vo-bP-gnU" userLabel="LogDateLabel">
-                                                                    <rect key="frame" x="48.333333333333329" y="11" width="53.666666666666671" height="17"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Proteins" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Vo-bP-gnU" userLabel="LogDateLabel">
+                                                                    <rect key="frame" x="48" y="11" width="55" height="17"/>
                                                                     <viewLayoutGuide key="safeArea" id="0na-Yi-w9J"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" ambiguous="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="TnF-GP-Hkk" userLabel="CarbsProgress">
-                                                                    <rect key="frame" x="0.0" y="37" width="150.33333333333334" height="2"/>
+                                                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="TnF-GP-Hkk" userLabel="CarbsProgress">
+                                                                    <rect key="frame" x="0.0" y="37" width="151" height="2"/>
                                                                     <viewLayoutGuide key="safeArea" id="v9N-gA-lCp"/>
                                                                 </progressView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Carbs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5wz-uZ-IxG" userLabel="LogDateLabel">
-                                                                    <rect key="frame" x="56" y="48" width="38.333333333333343" height="17"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Carbs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5wz-uZ-IxG" userLabel="LogDateLabel">
+                                                                    <rect key="frame" x="56" y="48" width="39" height="17"/>
                                                                     <viewLayoutGuide key="safeArea" id="ePX-W8-hGN"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" ambiguous="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="IkT-0W-djP" userLabel="FatsProgress">
-                                                                    <rect key="frame" x="0.0" y="74" width="150.33333333333334" height="2"/>
+                                                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="IkT-0W-djP" userLabel="FatsProgress">
+                                                                    <rect key="frame" x="0.0" y="74" width="151" height="2"/>
                                                                     <viewLayoutGuide key="safeArea" id="u0W-HF-Kng"/>
                                                                 </progressView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Fats" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SwG-7n-9XU" userLabel="LogDateLabel">
-                                                                    <rect key="frame" x="61.666666666666657" y="85" width="27" height="17"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fats" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SwG-7n-9XU" userLabel="LogDateLabel">
+                                                                    <rect key="frame" x="62" y="85" width="27" height="17"/>
                                                                     <viewLayoutGuide key="safeArea" id="hWr-kH-wyF"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="B5O-np-7Vc" firstAttribute="leading" secondItem="TnF-GP-Hkk" secondAttribute="leading" id="8ld-jD-1Hs"/>
+                                                                <constraint firstItem="5Vo-bP-gnU" firstAttribute="leading" secondItem="2WM-dx-he5" secondAttribute="leading" constant="48" id="HiD-Pz-sDD"/>
+                                                                <constraint firstItem="SwG-7n-9XU" firstAttribute="leading" secondItem="2WM-dx-he5" secondAttribute="leading" constant="62" id="Isi-YK-nEy"/>
+                                                                <constraint firstItem="TnF-GP-Hkk" firstAttribute="leading" secondItem="IkT-0W-djP" secondAttribute="leading" id="NKi-bD-zj6"/>
+                                                                <constraint firstItem="B5O-np-7Vc" firstAttribute="leading" secondItem="2WM-dx-he5" secondAttribute="leading" id="Uuu-rn-oTP"/>
+                                                                <constraint firstItem="5wz-uZ-IxG" firstAttribute="leading" secondItem="2WM-dx-he5" secondAttribute="leading" constant="56" id="hyS-RG-6aS"/>
+                                                            </constraints>
                                                         </stackView>
                                                     </subviews>
                                                 </view>
+                                                <constraints>
+                                                    <constraint firstItem="6fS-fg-R6j" firstAttribute="top" secondItem="hc9-Nv-YKs" secondAttribute="topMargin" constant="20" id="ZHf-jK-sXl"/>
+                                                    <constraint firstAttribute="trailingMargin" secondItem="2WM-dx-he5" secondAttribute="trailing" constant="-5" id="q1p-r2-tU7"/>
+                                                    <constraint firstItem="2WM-dx-he5" firstAttribute="leading" secondItem="6fS-fg-R6j" secondAttribute="trailing" constant="90" id="qNQ-Zu-95e"/>
+                                                    <constraint firstItem="2WM-dx-he5" firstAttribute="top" secondItem="hc9-Nv-YKs" secondAttribute="topMargin" constant="10" id="uef-Rl-liZ"/>
+                                                </constraints>
                                                 <connections>
-                                                    <outlet property="logLabel" destination="6fS-fg-R6j" id="COW-Ew-6Yy"/>
+                                                    <outlet property="logDateLabel" destination="6fS-fg-R6j" id="gm2-vv-Sbo"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
