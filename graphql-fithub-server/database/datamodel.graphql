@@ -25,16 +25,16 @@ type Log {
   meals: [Meal!]!
   didRun: Boolean @default(value: "false")
   createdAt: DateTime!
-  user: User!
+  user: User
 }
 
 type Meal {
   id: ID! @unique
   name: String!
-  calories: Int @default(value: 0)
-  proteins: Int @default(value: 0)
-  carbs: Int @default(value: 0)
-  fats: Int @default(value: 0)
+  calories: Int!
+  proteins: Int!
+  carbs: Int!
+  fats: Int!
   logs: [Log!]!
 }
 
