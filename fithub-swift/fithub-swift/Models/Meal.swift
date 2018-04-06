@@ -9,12 +9,12 @@
 import Foundation
 
 class Meal {
-    let id: String
-    let name: String
-    let calories: Int
-    let proteins: Int
-    let carbs: Int
-    let fats: Int
+    let id: String!
+    let name: String!
+    let calories: Int!
+    let proteins: Int!
+    let carbs: Int!
+    let fats: Int!
     
     init(id: String, name: String, calories: Int, proteins: Int, carbs: Int, fats: Int) {
         self.id = id

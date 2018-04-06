@@ -16,10 +16,10 @@ class Log {
 //    var totalFats: Float = 0.0
 //    var totalActivity: Float = 0
     var totalWater: Int = 0
-    var meals: [String: Meal] = [:]
+    var meals: [Meal] = []
     let logDate: Date
     
-    init(id: String, totalWater: Int?, logDate: Date = Date(), meals: [String: Meal]?) {
+    init(id: String, totalWater: Int?, logDate: Date = Date(), meals: [Meal]?) {
         self.id = id
         self.totalWater = (totalWater)!
         self.logDate = logDate
@@ -27,19 +27,20 @@ class Log {
     }
     
     func calculateCalories() -> Int {
-        return self.meals.reduce(0, { counter,meal in meal.value.calories + counter })
+        print(self.meals.count, "line 30")
+        return self.meals.reduce(0, { counter,meal in meal.calories + counter })
     }
     
     func calculateProteins() -> Int {
-        return self.meals.reduce(0, { counter,meal in meal.value.proteins + counter })
+        return self.meals.reduce(0, { counter,meal in meal.proteins + counter })
     }
     
     func calculateCarbs() -> Int {
-        return self.meals.reduce(0, { counter,meal in meal.value.carbs + counter })
+        return self.meals.reduce(0, { counter,meal in meal.carbs + counter })
     }
     
     func calculateFats() -> Int {
-        return self.meals.reduce(0, { counter,meal in meal.value.fats + counter })
+        return self.meals.reduce(0, { counter,meal in meal.fats + counter })
     }
     
 }
