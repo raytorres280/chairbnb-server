@@ -30,7 +30,6 @@ class CollectionViewCell: UICollectionViewCell {
         self.fats = log.calculateFats()
         
         print("updating cell data...")
-        print("proteins total", self.proteins)
         // update ui progress views here with prop values..
         logDateLabel.text = log.logDate.description
         

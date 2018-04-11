@@ -7,6 +7,7 @@ target 'fithub-swift' do
   pod "FoldingCell"
   pod "Apollo"
   pod "Charts"
+  pod "MKRingProgressView"
   # Pods for fithub-swift
 
 end

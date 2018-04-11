@@ -32,7 +32,6 @@ class ExploreVC: UIViewController, UICollectionViewDataSource, UICollectionViewD
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let senderVC = sender as! CollectionViewCell
         let destinationVC = segue.destination as! LogDetailsViewController
-        print(destinationVC)
         destinationVC.log = senderVC.log
         //set the log, let VC do the rest after load.
     }
@@ -77,8 +76,10 @@ class ExploreVC: UIViewController, UICollectionViewDataSource, UICollectionViewD
                     }
                 return Log(id: log.id, totalWater: log.totalWater, logDate: date!, meals: meals)
             }
-            self.logs = logs!
-            self.logCollection.reloadData()
+            if (logs != nil) {
+                self.logs = logs!
+                self.logCollection.reloadData()
+            }
         }
     }
 }

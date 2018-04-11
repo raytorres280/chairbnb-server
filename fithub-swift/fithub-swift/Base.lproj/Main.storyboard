@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GyY-Rj-JYw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Xhb-gi-eVl">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -11,68 +11,43 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="SCc-Dl-Uqy">
-            <objects>
-                <viewController id="GyY-Rj-JYw" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="EWb-6T-sOH">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OVZ-dU-l8l">
-                                <rect key="frame" x="105" y="193" width="165" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZST-ab-JPW">
-                                <rect key="frame" x="105" y="277" width="165" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9gf-8n-hTa">
-                                <rect key="frame" x="164" y="693" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.95294117649999999" green="0.78823529410000004" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="Xhb-gi-eVl" kind="show" id="kXs-Yb-Qz9"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="w0H-DY-TWf"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="20F-YN-lrY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3314" y="485"/>
-        </scene>
-        <!--Chairs-->
+        <!--Dashboard View Controller-->
         <scene sceneID="vdd-Pc-93x">
             <objects>
-                <viewController id="ypM-8p-dp0" sceneMemberID="viewController">
+                <viewController id="ypM-8p-dp0" userLabel="Dashboard View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="o3y-yV-e5r">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="tJr-Rh-U8V"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Chairs" image="icons8-chair-50" id="6Hg-8i-Uxj"/>
+                    <tabBarItem key="tabBarItem" title="Dashboard" image="pie-chart" id="6Hg-8i-Uxj" userLabel="Dashboard"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JnO-54-ZEW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2455" y="1155"/>
         </scene>
-        <!--testing-->
+        <!--Account-->
+        <scene sceneID="Gak-lt-aCE">
+            <objects>
+                <viewController id="hNA-in-UDo" userLabel="Account" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oLo-9B-h2d">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="cAn-CI-7cn"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Account" image="icons8-customer-50" id="rDy-3P-10C" userLabel="Account"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iRq-Uq-nht" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2455" y="464"/>
+        </scene>
+        <!--Logs-->
         <scene sceneID="lOd-Sh-Krz">
             <objects>
-                <navigationController id="ahp-sb-RHX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="testing" id="MkV-z3-nY4" userLabel="testing"/>
+                <navigationController id="ahp-sb-RHX" userLabel="Logs" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="testing" image="icons8-menu-50" id="MkV-z3-nY4" userLabel="Logs"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="oxF-Za-ydg">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -84,137 +59,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xqu-mi-vv2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3583" y="1880"/>
-        </scene>
-        <!--Logs-->
-        <scene sceneID="6hw-wh-1RM">
-            <objects>
-                <viewController storyboardIdentifier="ExploreViewController" id="dcJ-Uc-k2u" customClass="ExploreVC" customModule="fithub_swift" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="RLg-yJ-e7C">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RAp-G5-AIF">
-                                <rect key="frame" x="0.0" y="44" width="375" height="685"/>
-                                <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="GRn-MA-vqR">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="685"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="M5h-Zu-bki">
-                                            <size key="itemSize" width="300" height="132"/>
-                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        </collectionViewFlowLayout>
-                                        <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="customCell" id="hc9-Nv-YKs" customClass="CollectionViewCell" customModule="fithub_swift" customModuleProvider="target">
-                                                <rect key="frame" x="37.666666666666664" y="0.0" width="300" height="132"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="132"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6fS-fg-R6j" userLabel="LogDateLabel">
-                                                            <rect key="frame" x="12" y="20" width="36" height="21"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="2WM-dx-he5">
-                                                            <rect key="frame" x="146" y="18" width="151" height="102"/>
-                                                            <subviews>
-                                                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="B5O-np-7Vc" userLabel="ProteinProgress">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="151" height="2"/>
-                                                                    <viewLayoutGuide key="safeArea" id="gHf-C2-LLd"/>
-                                                                </progressView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Proteins" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Vo-bP-gnU" userLabel="LogDateLabel">
-                                                                    <rect key="frame" x="48" y="11" width="55" height="17"/>
-                                                                    <viewLayoutGuide key="safeArea" id="0na-Yi-w9J"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="TnF-GP-Hkk" userLabel="CarbsProgress">
-                                                                    <rect key="frame" x="0.0" y="37" width="151" height="2"/>
-                                                                    <viewLayoutGuide key="safeArea" id="v9N-gA-lCp"/>
-                                                                </progressView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Carbs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5wz-uZ-IxG" userLabel="LogDateLabel">
-                                                                    <rect key="frame" x="56" y="48" width="39" height="17"/>
-                                                                    <viewLayoutGuide key="safeArea" id="ePX-W8-hGN"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="IkT-0W-djP" userLabel="FatsProgress">
-                                                                    <rect key="frame" x="0.0" y="74" width="151" height="2"/>
-                                                                    <viewLayoutGuide key="safeArea" id="u0W-HF-Kng"/>
-                                                                </progressView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fats" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SwG-7n-9XU" userLabel="LogDateLabel">
-                                                                    <rect key="frame" x="62" y="85" width="27" height="17"/>
-                                                                    <viewLayoutGuide key="safeArea" id="hWr-kH-wyF"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                            <constraints>
-                                                                <constraint firstItem="B5O-np-7Vc" firstAttribute="leading" secondItem="TnF-GP-Hkk" secondAttribute="leading" id="8ld-jD-1Hs"/>
-                                                                <constraint firstItem="5Vo-bP-gnU" firstAttribute="leading" secondItem="2WM-dx-he5" secondAttribute="leading" constant="48" id="HiD-Pz-sDD"/>
-                                                                <constraint firstItem="SwG-7n-9XU" firstAttribute="leading" secondItem="2WM-dx-he5" secondAttribute="leading" constant="62" id="Isi-YK-nEy"/>
-                                                                <constraint firstItem="TnF-GP-Hkk" firstAttribute="leading" secondItem="IkT-0W-djP" secondAttribute="leading" id="NKi-bD-zj6"/>
-                                                                <constraint firstItem="B5O-np-7Vc" firstAttribute="leading" secondItem="2WM-dx-he5" secondAttribute="leading" id="Uuu-rn-oTP"/>
-                                                                <constraint firstItem="5wz-uZ-IxG" firstAttribute="leading" secondItem="2WM-dx-he5" secondAttribute="leading" constant="56" id="hyS-RG-6aS"/>
-                                                            </constraints>
-                                                        </stackView>
-                                                    </subviews>
-                                                </view>
-                                                <constraints>
-                                                    <constraint firstItem="6fS-fg-R6j" firstAttribute="top" secondItem="hc9-Nv-YKs" secondAttribute="topMargin" constant="20" id="ZHf-jK-sXl"/>
-                                                    <constraint firstAttribute="trailingMargin" secondItem="2WM-dx-he5" secondAttribute="trailing" constant="-5" id="q1p-r2-tU7"/>
-                                                    <constraint firstItem="2WM-dx-he5" firstAttribute="leading" secondItem="6fS-fg-R6j" secondAttribute="trailing" constant="90" id="qNQ-Zu-95e"/>
-                                                    <constraint firstItem="2WM-dx-he5" firstAttribute="top" secondItem="hc9-Nv-YKs" secondAttribute="topMargin" constant="10" id="uef-Rl-liZ"/>
-                                                </constraints>
-                                                <connections>
-                                                    <outlet property="carbsProgress" destination="TnF-GP-Hkk" id="qzo-gn-yvY"/>
-                                                    <outlet property="fatsProgress" destination="IkT-0W-djP" id="dVX-dZ-EP7"/>
-                                                    <outlet property="logDateLabel" destination="6fS-fg-R6j" id="gm2-vv-Sbo"/>
-                                                    <outlet property="proteinsProgress" destination="B5O-np-7Vc" id="sWT-5F-hBw"/>
-                                                </connections>
-                                            </collectionViewCell>
-                                        </cells>
-                                    </collectionView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.95294117649999999" green="0.78823529410000004" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstItem="GRn-MA-vqR" firstAttribute="leading" secondItem="RAp-G5-AIF" secondAttribute="leading" id="0Ut-HG-Q00"/>
-                                    <constraint firstItem="GRn-MA-vqR" firstAttribute="centerY" secondItem="RAp-G5-AIF" secondAttribute="centerY" id="9ji-Fh-LeM"/>
-                                    <constraint firstAttribute="bottom" secondItem="GRn-MA-vqR" secondAttribute="bottom" id="SkV-Eb-1UL"/>
-                                    <constraint firstItem="GRn-MA-vqR" firstAttribute="top" secondItem="RAp-G5-AIF" secondAttribute="top" id="cP2-Nf-Cor"/>
-                                    <constraint firstItem="GRn-MA-vqR" firstAttribute="centerX" secondItem="RAp-G5-AIF" secondAttribute="centerX" id="iDf-k3-HJz"/>
-                                    <constraint firstAttribute="trailing" secondItem="GRn-MA-vqR" secondAttribute="trailing" id="upu-BM-hyy"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="delegate" destination="dcJ-Uc-k2u" id="slA-pW-Btf"/>
-                                </connections>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" red="0.52156862749999999" green="0.11672411150000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="RAp-G5-AIF" firstAttribute="leading" secondItem="RLg-yJ-e7C" secondAttribute="leading" id="AcL-EC-AmK"/>
-                            <constraint firstItem="RAp-G5-AIF" firstAttribute="bottom" secondItem="gKH-5M-0Ls" secondAttribute="bottom" id="CwL-jS-yXq"/>
-                            <constraint firstItem="RAp-G5-AIF" firstAttribute="top" secondItem="gKH-5M-0Ls" secondAttribute="top" id="Tyx-7i-aY7"/>
-                            <constraint firstAttribute="trailing" secondItem="RAp-G5-AIF" secondAttribute="trailing" id="dMs-Uw-lRg"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="gKH-5M-0Ls"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Logs" image="icons8-menu-50" id="j3O-Hu-m8E"/>
-                    <connections>
-                        <outlet property="logCollection" destination="GRn-MA-vqR" id="bpy-DB-cn4"/>
-                        <outlet property="scrollContainer" destination="RAp-G5-AIF" id="oDi-E8-ptN"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4dm-oA-QmS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2455.1999999999998" y="484.72906403940891"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="PJJ-Q4-Gw0">
@@ -228,19 +72,19 @@
                         <color key="selectedImageTintColor" red="0.95294117649999999" green="0.78823529410000004" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="dcJ-Uc-k2u" kind="relationship" relationship="viewControllers" id="ZrT-96-RaI"/>
                         <segue destination="ypM-8p-dp0" kind="relationship" relationship="viewControllers" id="TTO-x7-RQf"/>
                         <segue destination="ahp-sb-RHX" kind="relationship" relationship="viewControllers" id="1Zh-X4-7wb"/>
+                        <segue destination="hNA-in-UDo" kind="relationship" relationship="viewControllers" id="CHQ-Ov-zHs"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QDf-EA-lh9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3314" y="1155"/>
         </scene>
-        <!--testing-->
+        <!--Logs List View Controller-->
         <scene sceneID="jj5-wh-Sj3">
             <objects>
-                <viewController storyboardIdentifier="ExploreViewControllerTESTING" id="Oji-1H-Nda" customClass="ExploreVC" customModule="fithub_swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ExploreViewControllerTESTING" id="Oji-1H-Nda" userLabel="Logs List View Controller" customClass="ExploreVC" customModule="fithub_swift" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fDB-Qz-KAR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -353,7 +197,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O7j-K9-9o8"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="testing" image="icons8-menu-50" id="eaU-cV-rbM"/>
+                    <tabBarItem key="tabBarItem" title="Logs" image="icons8-menu-50" id="eaU-cV-rbM" userLabel="Logs"/>
                     <navigationItem key="navigationItem" id="VlN-e4-8E8"/>
                     <connections>
                         <outlet property="logCollection" destination="daU-6y-IU8" id="Kah-Lk-NDG"/>
@@ -372,24 +216,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DETAILS SCREEN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6z1-wX-yhR">
-                                <rect key="frame" x="107" y="103" width="160" height="93"/>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="AWZ-8X-AMx" userLabel="Calories Consumed Progress">
+                                <rect key="frame" x="140" y="165" width="150" height="2"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <color key="progressTintColor" red="0.99952012300000004" green="0.8488656282" blue="0.23155790570000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </progressView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="qhK-aS-1ej" userLabel="Calories Burned Progress">
+                                <rect key="frame" x="140" y="228" width="150" height="2"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="progressTintColor" red="0.51709580420000001" green="0.86015087369999998" blue="0.99860531090000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </progressView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FN2-PN-o0T" userLabel="Water Progress">
+                                <rect key="frame" x="140" y="195" width="150" height="2"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="progressTintColor" red="1" green="0.3083605821" blue="0.13296069329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </progressView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="id for log" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uuE-3A-9BT">
-                                <rect key="frame" x="117" y="204" width="141" height="62"/>
+                                <rect key="frame" x="132" y="100" width="111" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SgM-S6-ksV" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="37" y="289" width="300" height="300"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="flame" translatesAutoresizingMaskIntoConstraints="NO" id="TAI-h4-6r2">
+                                <rect key="frame" x="88" y="181" width="23" height="23"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="light" translatesAutoresizingMaskIntoConstraints="NO" id="luC-g1-DMK">
+                                <rect key="frame" x="87" y="149" width="24" height="24"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="drop" translatesAutoresizingMaskIntoConstraints="NO" id="hIl-kg-yPH">
+                                <rect key="frame" x="88" y="214" width="23" height="24"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SgM-S6-ksV" userLabel="Macros Group Progress" customClass="MKRingProgressGroupView" customModule="fithub_swift">
+                                <rect key="frame" x="88" y="263" width="202" height="202"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -397,7 +260,7 @@
                     </view>
                     <connections>
                         <outlet property="logIdLabel" destination="uuE-3A-9BT" id="rth-dl-Jbl"/>
-                        <outlet property="macrosChart" destination="SgM-S6-ksV" id="Q0x-fB-93L"/>
+                        <outlet property="macrosProgress" destination="SgM-S6-ksV" id="yCU-yq-eZw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jSP-BS-JT6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -406,7 +269,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icons8-chair-50" width="25" height="25"/>
+        <image name="drop" width="85" height="85"/>
+        <image name="flame" width="85" height="85"/>
+        <image name="icons8-customer-50" width="25" height="25"/>
         <image name="icons8-menu-50" width="25" height="25"/>
+        <image name="light" width="85" height="85"/>
+        <image name="pie-chart" width="25" height="25"/>
     </resources>
 </document>

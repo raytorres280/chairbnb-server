@@ -6,17 +6,20 @@ PODS:
     - Charts/Core (= 3.1.0)
   - Charts/Core (3.1.0)
   - FoldingCell (3.0.5)
+  - MKRingProgressView (1.2)
 
 DEPENDENCIES:
   - Apollo
   - Charts
   - FoldingCell
+  - MKRingProgressView
 
 SPEC CHECKSUMS:
   Apollo: 66e0f52289551545adb7ecdd994e713fdbae26eb
   Charts: 0b0c96f6118b6ce63f11adbcaa3b31045ee4d772
   FoldingCell: 18daed710910823bc8457c3fba076a2408f21f0e
+  MKRingProgressView: 023e2241d1ef23b05cb9893aa4878395861e3902
 
-PODFILE CHECKSUM: e2897e32d0fb01aecb2f6ec06b93fac758e3302c
+PODFILE CHECKSUM: bf749bc0b84c399f992ec50bda1256453c9562e7
 
 COCOAPODS: 1.4.0

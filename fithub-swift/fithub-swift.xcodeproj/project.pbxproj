@@ -17,6 +17,7 @@
 		9E6996421FB58EE80057A43A /* CircleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6996411FB58EE80057A43A /* CircleModel.swift */; };
 		9E8184FB2072065E00A95CD6 /* Logs.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 9E8184FA2072065E00A95CD6 /* Logs.graphql */; };
 		9EA92D1C207173590069317C /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA92D1B207173590069317C /* Meal.swift */; };
+		9EC2555E20792A2A00A7088C /* MKRingProgressGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC2555D20792A2A00A7088C /* MKRingProgressGroupView.swift */; };
 		9EECF71B2072CD17002D180D /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EECF71A2072CD17002D180D /* API.swift */; };
 		9EECF71D2072D323002D180D /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 9EECF71C2072D322002D180D /* schema.json */; };
 		9EECF71F2072D412002D180D /* Meals.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 9EECF71E2072D412002D180D /* Meals.graphql */; };
@@ -39,6 +40,7 @@
 		9E6996411FB58EE80057A43A /* CircleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleModel.swift; sourceTree = "<group>"; };
 		9E8184FA2072065E00A95CD6 /* Logs.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Logs.graphql; sourceTree = "<group>"; };
 		9EA92D1B207173590069317C /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
+		9EC2555D20792A2A00A7088C /* MKRingProgressGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MKRingProgressGroupView.swift; path = "fithub-swift/ViewControllers/MKRingProgressGroupView.swift"; sourceTree = SOURCE_ROOT; };
 		9EECF71A2072CD17002D180D /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		9EECF71C2072D322002D180D /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		9EECF71E2072D412002D180D /* Meals.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Meals.graphql; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 		9EECF7212072E716002D180D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				9EC2555D20792A2A00A7088C /* MKRingProgressGroupView.swift */,
 				9E0294E91FD4EBFC00101C91 /* ExploreVC.swift */,
 				9EF8C6E4206F7AB80085BD19 /* CollectionViewCell.swift */,
 				9E5D10422077466A009143BF /* LogDetailsViewController.swift */,
@@ -271,12 +274,14 @@
 				"${BUILT_PRODUCTS_DIR}/Apollo/Apollo.framework",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/FoldingCell/FoldingCell.framework",
+				"${BUILT_PRODUCTS_DIR}/MKRingProgressView/MKRingProgressView.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Apollo.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FoldingCell.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MKRingProgressView.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -295,6 +300,7 @@
 				9E0294EA1FD4EBFC00101C91 /* ExploreVC.swift in Sources */,
 				9E6996421FB58EE80057A43A /* CircleModel.swift in Sources */,
 				9E5D10432077466A009143BF /* LogDetailsViewController.swift in Sources */,
+				9EC2555E20792A2A00A7088C /* MKRingProgressGroupView.swift in Sources */,
 				9EA92D1C207173590069317C /* Meal.swift in Sources */,
 				9E6996241FB57B590057A43A /* AppDelegate.swift in Sources */,
 				9EECF71B2072CD17002D180D /* API.swift in Sources */,
