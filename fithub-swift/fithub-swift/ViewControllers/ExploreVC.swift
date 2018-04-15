@@ -45,11 +45,12 @@ class ExploreVC: UIViewController, UICollectionViewDataSource, UICollectionViewD
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return logs.count
+        return self.logs.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = logCollection.dequeueReusableCell(withReuseIdentifier: "customCell", for: indexPath) as! CollectionViewCell
+        print(logs[indexPath.row])
         cell.updateCellData(log: logs[indexPath.row])
         return cell
     }
@@ -60,7 +61,7 @@ class ExploreVC: UIViewController, UICollectionViewDataSource, UICollectionViewD
     }
     
     func fetchLogs() {
-        apollo.fetch(query: LogsByUserIdQuery(id: "cjfk3c62o00bj0131quztynkn")) { (result, err) in
+        apollo.fetch(query: LogsByUserIdQuery(id: "cjfvzm1g4000r0131czeayhpd")) { (result, err) in
             let logs = result?.data?.logs.map {log -> Log in
                 //create date obj from date str
                 let dateFormatter = DateFormatter()
@@ -70,12 +71,12 @@ class ExploreVC: UIViewController, UICollectionViewDataSource, UICollectionViewD
                 
                 //format Log.meals from query data
                 var meals = [Meal]()
-                //wtf happened here? why? [map{}!]
                 meals = log.meals!.map { meal in
-                    return Meal(id: meal.id, name: meal.name, calories: meal.calories!, proteins: meal.proteins!, carbs: meal.carbs!, fats: meal.fats!)
+                    return Meal(id: meal.id, name: meal.name, calories: meal.calories, proteins: meal.proteins, carbs: meal.carbs, fats: meal.fats)
                     }
                 return Log(id: log.id, totalWater: log.totalWater, logDate: date!, meals: meals)
             }
+//            print(logs)
             if (logs != nil) {
                 self.logs = logs!
                 self.logCollection.reloadData()

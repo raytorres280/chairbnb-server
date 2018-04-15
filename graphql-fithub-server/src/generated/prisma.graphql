@@ -13,16 +13,16 @@ type Log implements Node {
   meals(where: MealWhereInput, orderBy: MealOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Meal!]
   didRun: Boolean
   createdAt: DateTime!
-  user(where: UserWhereInput): User!
+  user(where: UserWhereInput): User
 }
 
 type Meal implements Node {
   id: ID!
   name: String!
-  calories: Int
-  proteins: Int
-  carbs: Int
-  fats: Int
+  calories: Int!
+  proteins: Int!
+  carbs: Int!
+  fats: Int!
   logs(where: LogWhereInput, orderBy: LogOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Log!]
 }
 
@@ -105,7 +105,7 @@ input LogCreateInput {
   didRun: Boolean
   run: RunCreateOneInput
   meals: MealCreateManyWithoutLogsInput
-  user: UserCreateOneWithoutLogsInput!
+  user: UserCreateOneWithoutLogsInput
 }
 
 input LogCreateManyWithoutMealsInput {
@@ -123,7 +123,7 @@ input LogCreateWithoutMealsInput {
   caloriesBurned: Int
   didRun: Boolean
   run: RunCreateOneInput
-  user: UserCreateOneWithoutLogsInput!
+  user: UserCreateOneWithoutLogsInput
 }
 
 input LogCreateWithoutUserInput {
@@ -459,10 +459,10 @@ type MealConnection {
 
 input MealCreateInput {
   name: String!
-  calories: Int
-  proteins: Int
-  carbs: Int
-  fats: Int
+  calories: Int!
+  proteins: Int!
+  carbs: Int!
+  fats: Int!
   logs: LogCreateManyWithoutMealsInput
 }
 
@@ -473,10 +473,10 @@ input MealCreateManyWithoutLogsInput {
 
 input MealCreateWithoutLogsInput {
   name: String!
-  calories: Int
-  proteins: Int
-  carbs: Int
-  fats: Int
+  calories: Int!
+  proteins: Int!
+  carbs: Int!
+  fats: Int!
 }
 
 """
@@ -515,10 +515,10 @@ enum MealOrderByInput {
 type MealPreviousValues {
   id: ID!
   name: String!
-  calories: Int
-  proteins: Int
-  carbs: Int
-  fats: Int
+  calories: Int!
+  proteins: Int!
+  carbs: Int!
+  fats: Int!
 }
 
 type MealSubscriptionPayload {

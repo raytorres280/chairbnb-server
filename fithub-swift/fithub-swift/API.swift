@@ -115,10 +115,10 @@ public final class LogsByUserIdQuery: GraphQLQuery {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
-          GraphQLField("calories", type: .scalar(Int.self)),
-          GraphQLField("proteins", type: .scalar(Int.self)),
-          GraphQLField("carbs", type: .scalar(Int.self)),
-          GraphQLField("fats", type: .scalar(Int.self)),
+          GraphQLField("calories", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("proteins", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("carbs", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("fats", type: .nonNull(.scalar(Int.self))),
         ]
 
         public var snapshot: Snapshot
@@ -127,7 +127,7 @@ public final class LogsByUserIdQuery: GraphQLQuery {
           self.snapshot = snapshot
         }
 
-        public init(id: GraphQLID, name: String, calories: Int? = nil, proteins: Int? = nil, carbs: Int? = nil, fats: Int? = nil) {
+        public init(id: GraphQLID, name: String, calories: Int, proteins: Int, carbs: Int, fats: Int) {
           self.init(snapshot: ["__typename": "Meal", "id": id, "name": name, "calories": calories, "proteins": proteins, "carbs": carbs, "fats": fats])
         }
 
@@ -158,36 +158,36 @@ public final class LogsByUserIdQuery: GraphQLQuery {
           }
         }
 
-        public var calories: Int? {
+        public var calories: Int {
           get {
-            return snapshot["calories"] as? Int
+            return snapshot["calories"]! as! Int
           }
           set {
             snapshot.updateValue(newValue, forKey: "calories")
           }
         }
 
-        public var proteins: Int? {
+        public var proteins: Int {
           get {
-            return snapshot["proteins"] as? Int
+            return snapshot["proteins"]! as! Int
           }
           set {
             snapshot.updateValue(newValue, forKey: "proteins")
           }
         }
 
-        public var carbs: Int? {
+        public var carbs: Int {
           get {
-            return snapshot["carbs"] as? Int
+            return snapshot["carbs"]! as! Int
           }
           set {
             snapshot.updateValue(newValue, forKey: "carbs")
           }
         }
 
-        public var fats: Int? {
+        public var fats: Int {
           get {
-            return snapshot["fats"] as? Int
+            return snapshot["fats"]! as! Int
           }
           set {
             snapshot.updateValue(newValue, forKey: "fats")
@@ -238,10 +238,10 @@ public final class MealsQuery: GraphQLQuery {
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
         GraphQLField("name", type: .nonNull(.scalar(String.self))),
-        GraphQLField("calories", type: .scalar(Int.self)),
-        GraphQLField("proteins", type: .scalar(Int.self)),
-        GraphQLField("carbs", type: .scalar(Int.self)),
-        GraphQLField("fats", type: .scalar(Int.self)),
+        GraphQLField("calories", type: .nonNull(.scalar(Int.self))),
+        GraphQLField("proteins", type: .nonNull(.scalar(Int.self))),
+        GraphQLField("carbs", type: .nonNull(.scalar(Int.self))),
+        GraphQLField("fats", type: .nonNull(.scalar(Int.self))),
       ]
 
       public var snapshot: Snapshot
@@ -250,7 +250,7 @@ public final class MealsQuery: GraphQLQuery {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, name: String, calories: Int? = nil, proteins: Int? = nil, carbs: Int? = nil, fats: Int? = nil) {
+      public init(id: GraphQLID, name: String, calories: Int, proteins: Int, carbs: Int, fats: Int) {
         self.init(snapshot: ["__typename": "Meal", "id": id, "name": name, "calories": calories, "proteins": proteins, "carbs": carbs, "fats": fats])
       }
 
@@ -281,36 +281,36 @@ public final class MealsQuery: GraphQLQuery {
         }
       }
 
-      public var calories: Int? {
+      public var calories: Int {
         get {
-          return snapshot["calories"] as? Int
+          return snapshot["calories"]! as! Int
         }
         set {
           snapshot.updateValue(newValue, forKey: "calories")
         }
       }
 
-      public var proteins: Int? {
+      public var proteins: Int {
         get {
-          return snapshot["proteins"] as? Int
+          return snapshot["proteins"]! as! Int
         }
         set {
           snapshot.updateValue(newValue, forKey: "proteins")
         }
       }
 
-      public var carbs: Int? {
+      public var carbs: Int {
         get {
-          return snapshot["carbs"] as? Int
+          return snapshot["carbs"]! as! Int
         }
         set {
           snapshot.updateValue(newValue, forKey: "carbs")
         }
       }
 
-      public var fats: Int? {
+      public var fats: Int {
         get {
-          return snapshot["fats"] as? Int
+          return snapshot["fats"]! as! Int
         }
         set {
           snapshot.updateValue(newValue, forKey: "fats")
