@@ -16,8 +16,10 @@ class LogDetailsViewController: UIViewController {
     
     
     @IBOutlet weak var macrosProgress: MKRingProgressGroupView!
-    var log: Log?
-    
+    var log: LogDetails?
+    var proteins: Int = 0
+    var carbs: Int = 0
+    var fats: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,9 +33,9 @@ class LogDetailsViewController: UIViewController {
         //fats
         macrosProgress.ring3.startColor = UIColor(red:0.99, green:0.91, blue:0.30, alpha:1.0)
         
-        macrosProgress.ring1.progress = Double((log?.calculateProteins())!) / 100
-        macrosProgress.ring2.progress = Double((log?.calculateCarbs())!) / 200
-        macrosProgress.ring3.progress = Double((log?.calculateFats())!) / 50
+        macrosProgress.ring1.progress = Double(proteins) / 100
+        macrosProgress.ring2.progress = Double(carbs) / 200
+        macrosProgress.ring3.progress = Double(fats) / 50
         
         
     }

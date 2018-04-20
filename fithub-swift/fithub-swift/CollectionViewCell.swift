@@ -20,18 +20,18 @@ class CollectionViewCell: UICollectionViewCell {
     var proteins: Int = 0
     var carbs: Int = 0
     var fats: Int = 0
-    var log: Log?
+    var log: LogDetails?
     
     
-    func updateCellData(log: Log!) {
+    func updateCellData(log: LogDetails) {
         self.log = log
-        self.proteins = log.calculateProteins()
-        self.carbs = log.calculateCarbs()
-        self.fats = log.calculateFats()
+        self.proteins = log.meals!.reduce(0, { $0 + $1.meal.proteins })
+        self.carbs = log.meals!.reduce(0, { $0 + $1.meal.carbs })
+        self.fats = log.meals!.reduce(0, { $0 + $1.meal.fats })
         
         print("updating cell data...")
         // update ui progress views here with prop values..
-        logDateLabel.text = log.logDate.description
+        logDateLabel.text = log.createdAt
         
         proteinsProgress.progressTintColor = UIColor.blue
         carbsProgress.progressTintColor = UIColor.red

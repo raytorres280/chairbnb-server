@@ -16,6 +16,12 @@ type Mutation {
   createDraft(title: String!, text: String!): Post!
   publish(id: ID!): Post!
   deletePost(id: ID!): Post!
+  createLog(userId: ID!): Log!
+  # findLogByDate(userId: ID!, date: DateTime!)
+  #cant do below since no push or pop scalar list functions atm. in prisma beta 3 as of 4/12
+  #addMealToLog(id: ID!, mealId: ID!): Meal!
+  #now using custom join table instead. insert into n:n table
+  addMealEntryToLog(id: ID!, mealId: ID!, mealType: MEALTYPE): MealLogEntry
 }
 
 type Subscription {
@@ -33,3 +39,10 @@ type User {
   name: String!
   posts: [Post!]!
 }
+
+# enum MEALTYPE {
+#   BREAKFAST
+#   LUNCH
+#   DINNER
+#   SNACK
+# }

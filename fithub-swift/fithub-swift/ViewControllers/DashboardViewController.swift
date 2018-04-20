@@ -7,12 +7,21 @@
 //
 
 import UIKit
+import Apollo
 
+let activeLogUpdateKey = "active.log.update.data"
 class DashboardViewController: UIViewController {
-
+    
+    var currentLog: LogDetails?
+    var logTest: GraphQLQueryWatcher<LogsByUserIdQuery>?
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationController?.isNavigationBarHidden = true
+        apollo.watch(query: LogsByUserIdQuery(id: "cjg0qieg700by01310xm40jxh")) { (res, err) in
+            print("updated")
+            print(res?.data?.logs.count)
+            
+        }
         // Do any additional setup after loading the view.
     }
 

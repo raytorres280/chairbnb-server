@@ -18,13 +18,18 @@
 		9E6996321FB57B5A0057A43A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E6996301FB57B5A0057A43A /* LaunchScreen.storyboard */; };
 		9E6996421FB58EE80057A43A /* CircleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6996411FB58EE80057A43A /* CircleModel.swift */; };
 		9E8184FB2072065E00A95CD6 /* Logs.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 9E8184FA2072065E00A95CD6 /* Logs.graphql */; };
+		9E83205920872817008935A8 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E83205820872817008935A8 /* APIService.swift */; };
 		9E940FA3207F114C006F4C7B /* MealCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E940FA2207F114C006F4C7B /* MealCollectionViewCell.swift */; };
+		9E9E792E2089CABA009DDC70 /* fithub-swift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E9E792C2089CABA009DDC70 /* fithub-swift.xcdatamodeld */; };
 		9EA92D1C207173590069317C /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA92D1B207173590069317C /* Meal.swift */; };
 		9EC2555E20792A2A00A7088C /* MKRingProgressGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC2555D20792A2A00A7088C /* MKRingProgressGroupView.swift */; };
 		9EECF71B2072CD17002D180D /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EECF71A2072CD17002D180D /* API.swift */; };
 		9EECF71D2072D323002D180D /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 9EECF71C2072D322002D180D /* schema.json */; };
 		9EECF71F2072D412002D180D /* Meals.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 9EECF71E2072D412002D180D /* Meals.graphql */; };
 		9EF8C6E5206F7AB80085BD19 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF8C6E4206F7AB80085BD19 /* CollectionViewCell.swift */; };
+		9EFF101120835E520070B3AC /* MealLogEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFF101020835E520070B3AC /* MealLogEntry.swift */; };
+		9EFF10132083626A0070B3AC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFF10122083626A0070B3AC /* LoginViewController.swift */; };
+		9EFF101520836B2E0070B3AC /* Auth.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 9EFF101420836B2E0070B3AC /* Auth.graphql */; };
 		BFA8802F46A62FFAC588B267 /* Pods_fithub_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C78F57B2911EB5D9C7B1086 /* Pods_fithub_swift.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,13 +49,18 @@
 		9E6996331FB57B5A0057A43A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9E6996411FB58EE80057A43A /* CircleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleModel.swift; sourceTree = "<group>"; };
 		9E8184FA2072065E00A95CD6 /* Logs.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Logs.graphql; sourceTree = "<group>"; };
+		9E83205820872817008935A8 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		9E940FA2207F114C006F4C7B /* MealCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCollectionViewCell.swift; sourceTree = "<group>"; };
+		9E9E792D2089CABA009DDC70 /* User.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = User.xcdatamodel; sourceTree = "<group>"; };
 		9EA92D1B207173590069317C /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		9EC2555D20792A2A00A7088C /* MKRingProgressGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MKRingProgressGroupView.swift; path = "fithub-swift/ViewControllers/MKRingProgressGroupView.swift"; sourceTree = SOURCE_ROOT; };
 		9EECF71A2072CD17002D180D /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		9EECF71C2072D322002D180D /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		9EECF71E2072D412002D180D /* Meals.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Meals.graphql; sourceTree = "<group>"; };
 		9EF8C6E4206F7AB80085BD19 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CollectionViewCell.swift; path = "/Users/raymondtorres/Developer/chairbnb-swift/fithub-swift/fithub-swift/CollectionViewCell.swift"; sourceTree = "<absolute>"; };
+		9EFF101020835E520070B3AC /* MealLogEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealLogEntry.swift; sourceTree = "<group>"; };
+		9EFF10122083626A0070B3AC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		9EFF101420836B2E0070B3AC /* Auth.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Auth.graphql; sourceTree = "<group>"; };
 		D6FD32B8256D5AA5598BB606 /* Pods-fithub-swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fithub-swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fithub-swift/Pods-fithub-swift.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,6 +114,7 @@
 		9E6996221FB57B590057A43A /* fithub-swift */ = {
 			isa = PBXGroup;
 			children = (
+				9E83205520872046008935A8 /* GraphQL API service */,
 				9EECF7232073891A002D180D /* queries */,
 				9EECF7212072E716002D180D /* ViewControllers */,
 				9EECF7202072E70F002D180D /* Models */,
@@ -114,8 +125,17 @@
 				9E69962E1FB57B5A0057A43A /* Assets.xcassets */,
 				9E6996301FB57B5A0057A43A /* LaunchScreen.storyboard */,
 				9E6996331FB57B5A0057A43A /* Info.plist */,
+				9E9E792C2089CABA009DDC70 /* fithub-swift.xcdatamodeld */,
 			);
 			path = "fithub-swift";
+			sourceTree = "<group>";
+		};
+		9E83205520872046008935A8 /* GraphQL API service */ = {
+			isa = PBXGroup;
+			children = (
+				9E83205820872817008935A8 /* APIService.swift */,
+			);
+			path = "GraphQL API service";
 			sourceTree = "<group>";
 		};
 		9EECF7202072E70F002D180D /* Models */ = {
@@ -124,6 +144,7 @@
 				9E6996411FB58EE80057A43A /* CircleModel.swift */,
 				9E02E9DE1FB7A6E400F6821C /* Log.swift */,
 				9EA92D1B207173590069317C /* Meal.swift */,
+				9EFF101020835E520070B3AC /* MealLogEntry.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -138,6 +159,7 @@
 				9E242A6A207E93A400FFD8F4 /* DashboardViewController.swift */,
 				9E242A6C207E93B700FFD8F4 /* MealsViewController.swift */,
 				9E940FA2207F114C006F4C7B /* MealCollectionViewCell.swift */,
+				9EFF10122083626A0070B3AC /* LoginViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -147,6 +169,7 @@
 			children = (
 				9E8184FA2072065E00A95CD6 /* Logs.graphql */,
 				9EECF71E2072D412002D180D /* Meals.graphql */,
+				9EFF101420836B2E0070B3AC /* Auth.graphql */,
 			);
 			path = queries;
 			sourceTree = "<group>";
@@ -220,6 +243,7 @@
 				9E69962F1FB57B5A0057A43A /* Assets.xcassets in Resources */,
 				9EECF71F2072D412002D180D /* Meals.graphql in Resources */,
 				9E69962D1FB57B5A0057A43A /* Main.storyboard in Resources */,
+				9EFF101520836B2E0070B3AC /* Auth.graphql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,17 +328,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EFF10132083626A0070B3AC /* LoginViewController.swift in Sources */,
 				9E242A6D207E93B700FFD8F4 /* MealsViewController.swift in Sources */,
 				9EF8C6E5206F7AB80085BD19 /* CollectionViewCell.swift in Sources */,
 				9E02E9DF1FB7A6E400F6821C /* Log.swift in Sources */,
 				9E0294EA1FD4EBFC00101C91 /* ExploreVC.swift in Sources */,
 				9E6996421FB58EE80057A43A /* CircleModel.swift in Sources */,
+				9E83205920872817008935A8 /* APIService.swift in Sources */,
 				9E940FA3207F114C006F4C7B /* MealCollectionViewCell.swift in Sources */,
+				9E9E792E2089CABA009DDC70 /* fithub-swift.xcdatamodeld in Sources */,
 				9E5D10432077466A009143BF /* LogDetailsViewController.swift in Sources */,
 				9EC2555E20792A2A00A7088C /* MKRingProgressGroupView.swift in Sources */,
 				9EA92D1C207173590069317C /* Meal.swift in Sources */,
 				9E242A6B207E93A400FFD8F4 /* DashboardViewController.swift in Sources */,
 				9E6996241FB57B590057A43A /* AppDelegate.swift in Sources */,
+				9EFF101120835E520070B3AC /* MealLogEntry.swift in Sources */,
 				9EECF71B2072CD17002D180D /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -506,6 +534,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9E9E792C2089CABA009DDC70 /* fithub-swift.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9E9E792D2089CABA009DDC70 /* User.xcdatamodel */,
+			);
+			currentVersion = 9E9E792D2089CABA009DDC70 /* User.xcdatamodel */;
+			path = "fithub-swift.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 9E6996181FB57B590057A43A /* Project object */;
 }

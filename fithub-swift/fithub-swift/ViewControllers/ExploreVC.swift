@@ -9,12 +9,16 @@
 import Foundation
 import UIKit
 import Charts
+import Apollo
+
+//let logsUpdateKey = "logs.update.data"
 
 class ExploreVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var scrollContainer: UIScrollView!
     @IBOutlet weak var logCollection: UICollectionView!
-    var logs = [Log]()
+    var logTest: GraphQLQueryWatcher<LogsByUserIdQuery>?
+    var logs = [LogDetails]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +36,10 @@ class ExploreVC: UIViewController, UICollectionViewDataSource, UICollectionViewD
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let senderVC = sender as! CollectionViewCell
         let destinationVC = segue.destination as! LogDetailsViewController
-        destinationVC.log = senderVC.log
-        //set the log, let VC do the rest after load.
+        destinationVC.log = senderVC.log!
+        destinationVC.proteins = senderVC.proteins
+        destinationVC.carbs = senderVC.carbs
+        destinationVC.fats = senderVC.fats
     }
     override func viewWillAppear(_ animated: Bool) {
         //hide navbar on list view
@@ -50,7 +56,7 @@ class ExploreVC: UIViewController, UICollectionViewDataSource, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = logCollection.dequeueReusableCell(withReuseIdentifier: "customCell", for: indexPath) as! CollectionViewCell
-        print(logs[indexPath.row])
+//        print(logs[indexPath.row])
         cell.updateCellData(log: logs[indexPath.row])
         return cell
     }
@@ -61,26 +67,13 @@ class ExploreVC: UIViewController, UICollectionViewDataSource, UICollectionViewD
     }
     
     func fetchLogs() {
-        apollo.fetch(query: LogsByUserIdQuery(id: "cjfvzm1g4000r0131czeayhpd")) { (result, err) in
-            let logs = result?.data?.logs.map {log -> Log in
-                //create date obj from date str
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-                let dateString = log.createdAt
-                let date = dateFormatter.date(from: dateString)
-                
-                //format Log.meals from query data
-                var meals = [Meal]()
-                meals = log.meals!.map { meal in
-                    return Meal(id: meal.id, name: meal.name, calories: meal.calories, proteins: meal.proteins, carbs: meal.carbs, fats: meal.fats)
-                    }
-                return Log(id: log.id, totalWater: log.totalWater, logDate: date!, meals: meals)
+        //change id later when auth is done
+        apollo.fetch(query: LogsByUserIdQuery(id: "cjg0qieg700by01310xm40jxh")) { (result, err) in
+            guard let logs = result?.data?.logs else {
+                return
             }
-//            print(logs)
-            if (logs != nil) {
-                self.logs = logs!
-                self.logCollection.reloadData()
-            }
+            self.logs = logs.map { $0.fragments.logDetails }
+            self.logCollection.reloadData()
         }
     }
 }

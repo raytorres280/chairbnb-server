@@ -1,15 +1,33 @@
+fragment LogDetails on Log {
+    id
+    createdAt
+    meals {
+        ...MealLogEntryDetails
+    }
+    totalWater
+}
+
+fragment MealLogEntryDetails on MealLogEntry {
+    id
+    meal {
+        id
+        name
+        calories
+        proteins
+        carbs
+        fats
+    }
+    mealType
+}
+
 query LogsByUserId($id: ID!) {
     logs: logsByUserId(id: $id) {
-        id
-        createdAt
-        meals {
-            id
-            name
-            calories
-            proteins
-            carbs
-            fats
-        }
-        totalWater
+        ...LogDetails
+    }
+}
+
+mutation CreateLog($userId: ID!) {
+    log: createLog(userId: $userId) {
+        ...LogDetails
     }
 }

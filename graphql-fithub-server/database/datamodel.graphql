@@ -22,10 +22,28 @@ type Log {
   totalWater: Int @default(value: 0)
   caloriesBurned: Int @default(value: 0)
   run: Run
-  meals: [Meal!]!
+  meals: [MealLogEntry!]!
   didRun: Boolean @default(value: "false")
   createdAt: DateTime!
   user: User
+}
+
+#should be able to push and pop these at will
+#prisma beta 3 contains scalar list functions push and pop.
+#update resolvers when out of beta.
+type MealLogEntry {
+  id: ID! @unique
+  meal: Meal!
+  log: Log!
+  createdAt: DateTime!
+  mealType: MEALTYPE
+}
+
+enum MEALTYPE {
+  BREAKFAST
+  LUNCH
+  DINNER
+  SNACK
 }
 
 type Meal {
@@ -35,7 +53,6 @@ type Meal {
   proteins: Int!
   carbs: Int!
   fats: Int!
-  logs: [Log!]!
 }
 
 type Run {

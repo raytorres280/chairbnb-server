@@ -8,9 +8,9 @@
 
 import UIKit
 import Apollo
+import CoreData
 
 let apollo = ApolloClient(url: URL(string: "http://localhost:4000")!)
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        print("opened app")
         return true
     }
 
@@ -37,12 +38,124 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        print("reopened app")
+        
+        let context = self.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        //request.predicate = NSPredicate(format: "age = %@", "12")
+        request.returnsObjectsAsFaults = false
+//        do
+//        {
+//            let results = try context.fetch(request)
+//            for managedObject in results
+//            {
+//                let managedObjectData:NSManagedObject = managedObject as! NSManagedObject
+//                context.delete(managedObjectData)
+//            }
+//        } catch let error as NSError {
+//            print("Detele all data in User error : \(error) \(error.userInfo)")
+//        }
+        do {
+            let results = try context.fetch(request)
+            if(results.count == 1) {
+                print(results.description)
+                let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                let vc = storyboard.instantiateViewController(withIdentifier: "MainTabs") as? UITabBarController
+                self.window?.rootViewController = vc
+                self.window?.makeKeyAndVisible()
+                
+                //refetch app data
+            } else if(results.count > 1) {
+                print("results count not one")
+                for managedObject in results
+                {
+                    let managedObjectData:NSManagedObject = managedObject as! NSManagedObject
+                    context.delete(managedObjectData)
+                }
+                
+            }
+
+        } catch {
+            print("Failed")
+        }
+//        if() {
+//            print("loggedin, refetch data")
+//            let now = NSDate()
+//            guard let dashboardVC = storyboard.instantiateViewController(withIdentifier: "Dashboard") as? DashboardViewController else {
+//                return
+//            }
+//            let dateFormatter = DateFormatter()
+//            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+//            let dateString = dashboardVC.currentLog!.createdAt
+//            let date = dateFormatter.date(from: dateString)
+//            if(!NSCalendar.current.isDate(now as Date, inSameDayAs: date!)) {
+//                print("this is not the current date. Create new log")
+//                apollo.perform(mutation: CreateLogMutation(userId: "cjg0qieg700by01310xm40jxh")) {(result, err) in
+//                    print(result!.data!)
+//                    guard let res = result?.data?.log else {
+//                        return
+//                    }
+//                    //move old active log to top of logs list
+//                    //unnecessary if gql watcher is setup correctly.
+//                    //                apollo.fetch(query: LogsByUserIdQuery(id: "cjg0qieg700by01310xm40jxh")) {(result, err) in
+//                    //                    guard let logsVC = storyboard.instantiateViewController(withIdentifier: "LogsVC") as? ExploreVC else {
+//                    //                        return
+//                    //                    }
+//                    //                    guard let logs = result?.data?.logs
+//                    //                }
+//                    //make new log current active log.
+//                    dashboardVC.currentLog = res.fragments.logDetails
+//                }
+//            }
+//        }
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
+    
+    lazy var persistentContainer: NSPersistentContainer = {
+        /*
+         The persistent container for the application. This implementation
+         creates and returns a container, having loaded the store for the
+         application to it. This property is optional since there are legitimate
+         error conditions that could cause the creation of the store to fail.
+         */
+        let container = NSPersistentContainer(name: "fithub-swift")
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                
+                /*
+                 Typical reasons for an error here include:
+                 * The parent directory does not exist, cannot be created, or disallows writing.
+                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
+                 * The device is out of space.
+                 * The store could not be migrated to the current model version.
+                 Check the error message to determine what the actual problem was.
+                 */
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
+    
+    // MARK: - Core Data Saving support
+    
+    func saveContext () {
+        let context = persistentContainer.viewContext
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
+    }
 
 }
 

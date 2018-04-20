@@ -33,7 +33,8 @@ const Query = {
         user: {
           id
         }
-      }
+      },
+      orderBy: 'createdAt_DESC'
     }, info)
   },
   

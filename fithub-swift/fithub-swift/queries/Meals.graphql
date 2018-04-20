@@ -8,3 +8,9 @@ query Meals {
         fats
     }
 }
+
+mutation addMealEntryToLog($id: ID!, $mealId: ID!, $mealType: MEALTYPE) {
+    addMealEntryToLog(id: $id, mealId: $mealId, mealType: $mealType) {
+        id
+    }
+}
