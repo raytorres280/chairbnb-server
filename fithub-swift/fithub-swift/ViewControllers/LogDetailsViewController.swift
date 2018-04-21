@@ -24,7 +24,7 @@ class LogDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("details loaded")
-        logIdLabel.text = log!.id
+        logIdLabel.text = log!.createdAt
         
         //proteins
         macrosProgress.ring1.startColor = UIColor(red:0.75, green:0.26, blue:0.26, alpha:1.0)

@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         print("opened app")
+        apollo.cacheKeyForObject = { $0["id"] }
         return true
     }
 
@@ -42,25 +43,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let context = self.persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
-        //request.predicate = NSPredicate(format: "age = %@", "12")
         request.returnsObjectsAsFaults = false
-//        do
-//        {
-//            let results = try context.fetch(request)
-//            for managedObject in results
-//            {
-//                let managedObjectData:NSManagedObject = managedObject as! NSManagedObject
-//                context.delete(managedObjectData)
-//            }
-//        } catch let error as NSError {
-//            print("Detele all data in User error : \(error) \(error.userInfo)")
-//        }
+        
         do {
             let results = try context.fetch(request)
             if(results.count == 1) {
+                print("loggedin, refetch data")
+                APIService.fetchLogs()
                 print(results.description)
+                
                 let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-                let vc = storyboard.instantiateViewController(withIdentifier: "MainTabs") as? UITabBarController
+                guard let vc = storyboard.instantiateViewController(withIdentifier: "MainTabs") as? UITabBarController else {
+                    return
+                }
                 self.window?.rootViewController = vc
                 self.window?.makeKeyAndVisible()
                 
@@ -72,42 +67,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let managedObjectData:NSManagedObject = managedObject as! NSManagedObject
                     context.delete(managedObjectData)
                 }
-                
             }
 
         } catch {
             print("Failed")
         }
-//        if() {
-//            print("loggedin, refetch data")
-//            let now = NSDate()
-//            guard let dashboardVC = storyboard.instantiateViewController(withIdentifier: "Dashboard") as? DashboardViewController else {
-//                return
-//            }
-//            let dateFormatter = DateFormatter()
-//            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-//            let dateString = dashboardVC.currentLog!.createdAt
-//            let date = dateFormatter.date(from: dateString)
-//            if(!NSCalendar.current.isDate(now as Date, inSameDayAs: date!)) {
-//                print("this is not the current date. Create new log")
-//                apollo.perform(mutation: CreateLogMutation(userId: "cjg0qieg700by01310xm40jxh")) {(result, err) in
-//                    print(result!.data!)
-//                    guard let res = result?.data?.log else {
-//                        return
-//                    }
-//                    //move old active log to top of logs list
-//                    //unnecessary if gql watcher is setup correctly.
-//                    //                apollo.fetch(query: LogsByUserIdQuery(id: "cjg0qieg700by01310xm40jxh")) {(result, err) in
-//                    //                    guard let logsVC = storyboard.instantiateViewController(withIdentifier: "LogsVC") as? ExploreVC else {
-//                    //                        return
-//                    //                    }
-//                    //                    guard let logs = result?.data?.logs
-//                    //                }
-//                    //make new log current active log.
-//                    dashboardVC.currentLog = res.fragments.logDetails
-//                }
-//            }
-//        }
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

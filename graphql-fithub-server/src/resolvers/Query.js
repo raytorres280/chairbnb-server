@@ -28,7 +28,7 @@ const Query = {
   },
 
   logsByUserId(parent, { id }, ctx, info) {
-    return ctx.db.query.logs({
+    let logs = ctx.db.query.logs({
       where: {
         user: {
           id
@@ -36,6 +36,8 @@ const Query = {
       },
       orderBy: 'createdAt_DESC'
     }, info)
+    return logs
+    // if(logs[0].createdAt)
   },
   
   logs(parent, args, ctx, info) {
