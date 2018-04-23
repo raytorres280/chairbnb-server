@@ -5,17 +5,13 @@ fragment LogDetails on Log {
         ...MealLogEntryDetails
     }
     totalWater
+    caloriesBurned
 }
 
 fragment MealLogEntryDetails on MealLogEntry {
     id
     meal {
-        id
-        name
-        calories
-        proteins
-        carbs
-        fats
+        ...MealDetails
     }
     mealType
 }

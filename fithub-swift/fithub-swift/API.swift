@@ -285,7 +285,7 @@ public final class LogsByUserIdQuery: GraphQLQuery {
   public static let operationString =
     "query LogsByUserId($id: ID!) {\n  logs: logsByUserId(id: $id) {\n    __typename\n    ...LogDetails\n  }\n}"
 
-  public static var requestString: String { return operationString.appending(LogDetails.fragmentString).appending(MealLogEntryDetails.fragmentString) }
+  public static var requestString: String { return operationString.appending(LogDetails.fragmentString).appending(MealLogEntryDetails.fragmentString).appending(MealDetails.fragmentString) }
 
   public var id: GraphQLID
 
@@ -333,6 +333,7 @@ public final class LogsByUserIdQuery: GraphQLQuery {
         GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
         GraphQLField("meals", type: .list(.nonNull(.object(Meal.selections)))),
         GraphQLField("totalWater", type: .scalar(Int.self)),
+        GraphQLField("caloriesBurned", type: .scalar(Int.self)),
       ]
 
       public var snapshot: Snapshot
@@ -341,8 +342,8 @@ public final class LogsByUserIdQuery: GraphQLQuery {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, createdAt: String, meals: [Meal]? = nil, totalWater: Int? = nil) {
-        self.init(snapshot: ["__typename": "Log", "id": id, "createdAt": createdAt, "meals": meals.flatMap { (value: [Meal]) -> [Snapshot] in value.map { (value: Meal) -> Snapshot in value.snapshot } }, "totalWater": totalWater])
+      public init(id: GraphQLID, createdAt: String, meals: [Meal]? = nil, totalWater: Int? = nil, caloriesBurned: Int? = nil) {
+        self.init(snapshot: ["__typename": "Log", "id": id, "createdAt": createdAt, "meals": meals.flatMap { (value: [Meal]) -> [Snapshot] in value.map { (value: Meal) -> Snapshot in value.snapshot } }, "totalWater": totalWater, "caloriesBurned": caloriesBurned])
       }
 
       public var __typename: String {
@@ -387,6 +388,15 @@ public final class LogsByUserIdQuery: GraphQLQuery {
         }
         set {
           snapshot.updateValue(newValue, forKey: "totalWater")
+        }
+      }
+
+      public var caloriesBurned: Int? {
+        get {
+          return snapshot["caloriesBurned"] as? Int
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "caloriesBurned")
         }
       }
 
@@ -496,6 +506,7 @@ public final class LogsByUserIdQuery: GraphQLQuery {
 
           public static let selections: [GraphQLSelection] = [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
             GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("calories", type: .nonNull(.scalar(Int.self))),
@@ -576,6 +587,28 @@ public final class LogsByUserIdQuery: GraphQLQuery {
               snapshot.updateValue(newValue, forKey: "fats")
             }
           }
+
+          public var fragments: Fragments {
+            get {
+              return Fragments(snapshot: snapshot)
+            }
+            set {
+              snapshot += newValue.snapshot
+            }
+          }
+
+          public struct Fragments {
+            public var snapshot: Snapshot
+
+            public var mealDetails: MealDetails {
+              get {
+                return MealDetails(snapshot: snapshot)
+              }
+              set {
+                snapshot += newValue.snapshot
+              }
+            }
+          }
         }
       }
     }
@@ -586,7 +619,7 @@ public final class CreateLogMutation: GraphQLMutation {
   public static let operationString =
     "mutation CreateLog($userId: ID!) {\n  log: createLog(userId: $userId) {\n    __typename\n    ...LogDetails\n  }\n}"
 
-  public static var requestString: String { return operationString.appending(LogDetails.fragmentString).appending(MealLogEntryDetails.fragmentString) }
+  public static var requestString: String { return operationString.appending(LogDetails.fragmentString).appending(MealLogEntryDetails.fragmentString).appending(MealDetails.fragmentString) }
 
   public var userId: GraphQLID
 
@@ -634,6 +667,7 @@ public final class CreateLogMutation: GraphQLMutation {
         GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
         GraphQLField("meals", type: .list(.nonNull(.object(Meal.selections)))),
         GraphQLField("totalWater", type: .scalar(Int.self)),
+        GraphQLField("caloriesBurned", type: .scalar(Int.self)),
       ]
 
       public var snapshot: Snapshot
@@ -642,8 +676,8 @@ public final class CreateLogMutation: GraphQLMutation {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, createdAt: String, meals: [Meal]? = nil, totalWater: Int? = nil) {
-        self.init(snapshot: ["__typename": "Log", "id": id, "createdAt": createdAt, "meals": meals.flatMap { (value: [Meal]) -> [Snapshot] in value.map { (value: Meal) -> Snapshot in value.snapshot } }, "totalWater": totalWater])
+      public init(id: GraphQLID, createdAt: String, meals: [Meal]? = nil, totalWater: Int? = nil, caloriesBurned: Int? = nil) {
+        self.init(snapshot: ["__typename": "Log", "id": id, "createdAt": createdAt, "meals": meals.flatMap { (value: [Meal]) -> [Snapshot] in value.map { (value: Meal) -> Snapshot in value.snapshot } }, "totalWater": totalWater, "caloriesBurned": caloriesBurned])
       }
 
       public var __typename: String {
@@ -688,6 +722,15 @@ public final class CreateLogMutation: GraphQLMutation {
         }
         set {
           snapshot.updateValue(newValue, forKey: "totalWater")
+        }
+      }
+
+      public var caloriesBurned: Int? {
+        get {
+          return snapshot["caloriesBurned"] as? Int
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "caloriesBurned")
         }
       }
 
@@ -797,6 +840,7 @@ public final class CreateLogMutation: GraphQLMutation {
 
           public static let selections: [GraphQLSelection] = [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
             GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("calories", type: .nonNull(.scalar(Int.self))),
@@ -877,6 +921,28 @@ public final class CreateLogMutation: GraphQLMutation {
               snapshot.updateValue(newValue, forKey: "fats")
             }
           }
+
+          public var fragments: Fragments {
+            get {
+              return Fragments(snapshot: snapshot)
+            }
+            set {
+              snapshot += newValue.snapshot
+            }
+          }
+
+          public struct Fragments {
+            public var snapshot: Snapshot
+
+            public var mealDetails: MealDetails {
+              get {
+                return MealDetails(snapshot: snapshot)
+              }
+              set {
+                snapshot += newValue.snapshot
+              }
+            }
+          }
         }
       }
     }
@@ -885,7 +951,9 @@ public final class CreateLogMutation: GraphQLMutation {
 
 public final class MealsQuery: GraphQLQuery {
   public static let operationString =
-    "query Meals {\n  meals {\n    __typename\n    id\n    name\n    calories\n    proteins\n    carbs\n    fats\n  }\n}"
+    "query Meals {\n  meals {\n    __typename\n    ...MealDetails\n  }\n}"
+
+  public static var requestString: String { return operationString.appending(MealDetails.fragmentString) }
 
   public init() {
   }
@@ -920,6 +988,7 @@ public final class MealsQuery: GraphQLQuery {
       public static let possibleTypes = ["Meal"]
 
       public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
         GraphQLField("name", type: .nonNull(.scalar(String.self))),
@@ -1001,13 +1070,37 @@ public final class MealsQuery: GraphQLQuery {
           snapshot.updateValue(newValue, forKey: "fats")
         }
       }
+
+      public var fragments: Fragments {
+        get {
+          return Fragments(snapshot: snapshot)
+        }
+        set {
+          snapshot += newValue.snapshot
+        }
+      }
+
+      public struct Fragments {
+        public var snapshot: Snapshot
+
+        public var mealDetails: MealDetails {
+          get {
+            return MealDetails(snapshot: snapshot)
+          }
+          set {
+            snapshot += newValue.snapshot
+          }
+        }
+      }
     }
   }
 }
 
 public final class AddMealEntryToLogMutation: GraphQLMutation {
   public static let operationString =
-    "mutation addMealEntryToLog($id: ID!, $mealId: ID!, $mealType: MEALTYPE) {\n  addMealEntryToLog(id: $id, mealId: $mealId, mealType: $mealType) {\n    __typename\n    id\n  }\n}"
+    "mutation addMealEntryToLog($id: ID!, $mealId: ID!, $mealType: MEALTYPE) {\n  addMealEntryToLog(id: $id, mealId: $mealId, mealType: $mealType) {\n    __typename\n    ...MealLogEntryDetails\n  }\n}"
+
+  public static var requestString: String { return operationString.appending(MealLogEntryDetails.fragmentString).appending(MealDetails.fragmentString) }
 
   public var id: GraphQLID
   public var mealId: GraphQLID
@@ -1054,7 +1147,10 @@ public final class AddMealEntryToLogMutation: GraphQLMutation {
 
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+        GraphQLField("meal", type: .nonNull(.object(Meal.selections))),
+        GraphQLField("mealType", type: .scalar(MEALTYPE.self)),
       ]
 
       public var snapshot: Snapshot
@@ -1063,8 +1159,8 @@ public final class AddMealEntryToLogMutation: GraphQLMutation {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID) {
-        self.init(snapshot: ["__typename": "MealLogEntry", "id": id])
+      public init(id: GraphQLID, meal: Meal, mealType: MEALTYPE? = nil) {
+        self.init(snapshot: ["__typename": "MealLogEntry", "id": id, "meal": meal.snapshot, "mealType": mealType])
       }
 
       public var __typename: String {
@@ -1084,13 +1180,163 @@ public final class AddMealEntryToLogMutation: GraphQLMutation {
           snapshot.updateValue(newValue, forKey: "id")
         }
       }
+
+      public var meal: Meal {
+        get {
+          return Meal(snapshot: snapshot["meal"]! as! Snapshot)
+        }
+        set {
+          snapshot.updateValue(newValue.snapshot, forKey: "meal")
+        }
+      }
+
+      public var mealType: MEALTYPE? {
+        get {
+          return snapshot["mealType"] as? MEALTYPE
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "mealType")
+        }
+      }
+
+      public var fragments: Fragments {
+        get {
+          return Fragments(snapshot: snapshot)
+        }
+        set {
+          snapshot += newValue.snapshot
+        }
+      }
+
+      public struct Fragments {
+        public var snapshot: Snapshot
+
+        public var mealLogEntryDetails: MealLogEntryDetails {
+          get {
+            return MealLogEntryDetails(snapshot: snapshot)
+          }
+          set {
+            snapshot += newValue.snapshot
+          }
+        }
+      }
+
+      public struct Meal: GraphQLSelectionSet {
+        public static let possibleTypes = ["Meal"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+          GraphQLField("name", type: .nonNull(.scalar(String.self))),
+          GraphQLField("calories", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("proteins", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("carbs", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("fats", type: .nonNull(.scalar(Int.self))),
+        ]
+
+        public var snapshot: Snapshot
+
+        public init(snapshot: Snapshot) {
+          self.snapshot = snapshot
+        }
+
+        public init(id: GraphQLID, name: String, calories: Int, proteins: Int, carbs: Int, fats: Int) {
+          self.init(snapshot: ["__typename": "Meal", "id": id, "name": name, "calories": calories, "proteins": proteins, "carbs": carbs, "fats": fats])
+        }
+
+        public var __typename: String {
+          get {
+            return snapshot["__typename"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: GraphQLID {
+          get {
+            return snapshot["id"]! as! GraphQLID
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        public var name: String {
+          get {
+            return snapshot["name"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "name")
+          }
+        }
+
+        public var calories: Int {
+          get {
+            return snapshot["calories"]! as! Int
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "calories")
+          }
+        }
+
+        public var proteins: Int {
+          get {
+            return snapshot["proteins"]! as! Int
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "proteins")
+          }
+        }
+
+        public var carbs: Int {
+          get {
+            return snapshot["carbs"]! as! Int
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "carbs")
+          }
+        }
+
+        public var fats: Int {
+          get {
+            return snapshot["fats"]! as! Int
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "fats")
+          }
+        }
+
+        public var fragments: Fragments {
+          get {
+            return Fragments(snapshot: snapshot)
+          }
+          set {
+            snapshot += newValue.snapshot
+          }
+        }
+
+        public struct Fragments {
+          public var snapshot: Snapshot
+
+          public var mealDetails: MealDetails {
+            get {
+              return MealDetails(snapshot: snapshot)
+            }
+            set {
+              snapshot += newValue.snapshot
+            }
+          }
+        }
+      }
     }
   }
 }
 
 public struct LogDetails: GraphQLFragment {
   public static let fragmentString =
-    "fragment LogDetails on Log {\n  __typename\n  id\n  createdAt\n  meals {\n    __typename\n    ...MealLogEntryDetails\n  }\n  totalWater\n}"
+    "fragment LogDetails on Log {\n  __typename\n  id\n  createdAt\n  meals {\n    __typename\n    ...MealLogEntryDetails\n  }\n  totalWater\n  caloriesBurned\n}"
 
   public static let possibleTypes = ["Log"]
 
@@ -1100,6 +1346,7 @@ public struct LogDetails: GraphQLFragment {
     GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
     GraphQLField("meals", type: .list(.nonNull(.object(Meal.selections)))),
     GraphQLField("totalWater", type: .scalar(Int.self)),
+    GraphQLField("caloriesBurned", type: .scalar(Int.self)),
   ]
 
   public var snapshot: Snapshot
@@ -1108,8 +1355,8 @@ public struct LogDetails: GraphQLFragment {
     self.snapshot = snapshot
   }
 
-  public init(id: GraphQLID, createdAt: String, meals: [Meal]? = nil, totalWater: Int? = nil) {
-    self.init(snapshot: ["__typename": "Log", "id": id, "createdAt": createdAt, "meals": meals.flatMap { (value: [Meal]) -> [Snapshot] in value.map { (value: Meal) -> Snapshot in value.snapshot } }, "totalWater": totalWater])
+  public init(id: GraphQLID, createdAt: String, meals: [Meal]? = nil, totalWater: Int? = nil, caloriesBurned: Int? = nil) {
+    self.init(snapshot: ["__typename": "Log", "id": id, "createdAt": createdAt, "meals": meals.flatMap { (value: [Meal]) -> [Snapshot] in value.map { (value: Meal) -> Snapshot in value.snapshot } }, "totalWater": totalWater, "caloriesBurned": caloriesBurned])
   }
 
   public var __typename: String {
@@ -1154,6 +1401,15 @@ public struct LogDetails: GraphQLFragment {
     }
     set {
       snapshot.updateValue(newValue, forKey: "totalWater")
+    }
+  }
+
+  public var caloriesBurned: Int? {
+    get {
+      return snapshot["caloriesBurned"] as? Int
+    }
+    set {
+      snapshot.updateValue(newValue, forKey: "caloriesBurned")
     }
   }
 
@@ -1241,6 +1497,7 @@ public struct LogDetails: GraphQLFragment {
 
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
         GraphQLField("name", type: .nonNull(.scalar(String.self))),
         GraphQLField("calories", type: .nonNull(.scalar(Int.self))),
@@ -1321,13 +1578,35 @@ public struct LogDetails: GraphQLFragment {
           snapshot.updateValue(newValue, forKey: "fats")
         }
       }
+
+      public var fragments: Fragments {
+        get {
+          return Fragments(snapshot: snapshot)
+        }
+        set {
+          snapshot += newValue.snapshot
+        }
+      }
+
+      public struct Fragments {
+        public var snapshot: Snapshot
+
+        public var mealDetails: MealDetails {
+          get {
+            return MealDetails(snapshot: snapshot)
+          }
+          set {
+            snapshot += newValue.snapshot
+          }
+        }
+      }
     }
   }
 }
 
 public struct MealLogEntryDetails: GraphQLFragment {
   public static let fragmentString =
-    "fragment MealLogEntryDetails on MealLogEntry {\n  __typename\n  id\n  meal {\n    __typename\n    id\n    name\n    calories\n    proteins\n    carbs\n    fats\n  }\n  mealType\n}"
+    "fragment MealLogEntryDetails on MealLogEntry {\n  __typename\n  id\n  meal {\n    __typename\n    ...MealDetails\n  }\n  mealType\n}"
 
   public static let possibleTypes = ["MealLogEntry"]
 
@@ -1388,6 +1667,7 @@ public struct MealLogEntryDetails: GraphQLFragment {
     public static let possibleTypes = ["Meal"]
 
     public static let selections: [GraphQLSelection] = [
+      GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
       GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
       GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
       GraphQLField("name", type: .nonNull(.scalar(String.self))),
@@ -1468,6 +1748,118 @@ public struct MealLogEntryDetails: GraphQLFragment {
       set {
         snapshot.updateValue(newValue, forKey: "fats")
       }
+    }
+
+    public var fragments: Fragments {
+      get {
+        return Fragments(snapshot: snapshot)
+      }
+      set {
+        snapshot += newValue.snapshot
+      }
+    }
+
+    public struct Fragments {
+      public var snapshot: Snapshot
+
+      public var mealDetails: MealDetails {
+        get {
+          return MealDetails(snapshot: snapshot)
+        }
+        set {
+          snapshot += newValue.snapshot
+        }
+      }
+    }
+  }
+}
+
+public struct MealDetails: GraphQLFragment {
+  public static let fragmentString =
+    "fragment MealDetails on Meal {\n  __typename\n  id\n  name\n  calories\n  proteins\n  carbs\n  fats\n}"
+
+  public static let possibleTypes = ["Meal"]
+
+  public static let selections: [GraphQLSelection] = [
+    GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+    GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+    GraphQLField("name", type: .nonNull(.scalar(String.self))),
+    GraphQLField("calories", type: .nonNull(.scalar(Int.self))),
+    GraphQLField("proteins", type: .nonNull(.scalar(Int.self))),
+    GraphQLField("carbs", type: .nonNull(.scalar(Int.self))),
+    GraphQLField("fats", type: .nonNull(.scalar(Int.self))),
+  ]
+
+  public var snapshot: Snapshot
+
+  public init(snapshot: Snapshot) {
+    self.snapshot = snapshot
+  }
+
+  public init(id: GraphQLID, name: String, calories: Int, proteins: Int, carbs: Int, fats: Int) {
+    self.init(snapshot: ["__typename": "Meal", "id": id, "name": name, "calories": calories, "proteins": proteins, "carbs": carbs, "fats": fats])
+  }
+
+  public var __typename: String {
+    get {
+      return snapshot["__typename"]! as! String
+    }
+    set {
+      snapshot.updateValue(newValue, forKey: "__typename")
+    }
+  }
+
+  public var id: GraphQLID {
+    get {
+      return snapshot["id"]! as! GraphQLID
+    }
+    set {
+      snapshot.updateValue(newValue, forKey: "id")
+    }
+  }
+
+  public var name: String {
+    get {
+      return snapshot["name"]! as! String
+    }
+    set {
+      snapshot.updateValue(newValue, forKey: "name")
+    }
+  }
+
+  public var calories: Int {
+    get {
+      return snapshot["calories"]! as! Int
+    }
+    set {
+      snapshot.updateValue(newValue, forKey: "calories")
+    }
+  }
+
+  public var proteins: Int {
+    get {
+      return snapshot["proteins"]! as! Int
+    }
+    set {
+      snapshot.updateValue(newValue, forKey: "proteins")
+    }
+  }
+
+  public var carbs: Int {
+    get {
+      return snapshot["carbs"]! as! Int
+    }
+    set {
+      snapshot.updateValue(newValue, forKey: "carbs")
+    }
+  }
+
+  public var fats: Int {
+    get {
+      return snapshot["fats"]! as! Int
+    }
+    set {
+      snapshot.updateValue(newValue, forKey: "fats")
     }
   }
 }

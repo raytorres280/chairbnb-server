@@ -24,7 +24,11 @@ class MealsViewController: UIViewController, UICollectionViewDataSource, UIColle
         mealsCollection.dataSource = self
         fetchMeals()
     }
-
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("selected")
+        print(indexPath)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of anyd resources that can be recreated.

@@ -19,6 +19,7 @@ class APIService {
         }
     }
     static var activeLog: LogDetails?
+    static var activeMeals: [MealLogEntryDetails]?
     
     private static func notify(){
         let name = Notification.Name(rawValue: "did.update.logs")
@@ -26,40 +27,51 @@ class APIService {
         
         
     }
-    static func fetchLogs(userId: String = "cjg8rogq7003l0131j3ue2vbs") {
+    static func fetchLogs(userId: String = "cjgbs9ch600760131g366xhab") {
         apollo.fetch(query: LogsByUserIdQuery(id: userId)) { (result, err) in
             guard let res = result?.data?.logs else {
                 return
             }
-            let logs = res.map {$0.fragments.logDetails}
+            var logs = res.map {$0.fragments.logDetails}
             //check if latest log matches current date, if not do a create
-            print(logs[0].createdAt) //latest since descending
             let now = NSDate()
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
             let dateString = logs[0].createdAt
             let date = formatter.date(from: dateString)
+            let active = logs.remove(at: 0)
+            let meals = active.meals?.map {$0.fragments.mealLogEntryDetails}
             APIService.sharedInstance.logs = logs
-            
+            APIService.activeLog = active
+            APIService.activeMeals = meals
             if(!NSCalendar.current.isDate(now as Date, inSameDayAs: date!)) {
                 print("this is not the current date. Create new log")
-                //chaining async in swift??????
-                self.createLog()
+                APIService.createLog()//chaining async in swift??????
             }
             
         }
         
     }
     
-    static func createLog(userId: String = "cjg8rogq7003l0131j3ue2vbs") {
-        apollo.perform(mutation: CreateLogMutation(userId: "cjg8rogq7003l0131j3ue2vbs")) { (result, err) in
+    static func createLog(userId: String = "cjgbs9ch600760131g366xhab") {
+        apollo.perform(mutation: CreateLogMutation(userId: "cjgbs9ch600760131g366xhab")) { (result, err) in
             print(result!.data!)
             guard let res = result?.data?.log else {
                 return
             }
             let log = res.fragments.logDetails
-            APIService.sharedInstance.logs.insert(log, at: 0)
-            self.activeLog = log
+            APIService.activeLog = log
+        }
+    }
+   
+    static func addMealToLog(mealId: String!) {
+        apollo.perform(mutation: AddMealEntryToLogMutation(id: APIService.activeLog!.id, mealId: mealId, mealType: MEALTYPE(rawValue: "BREAKFAST"))) { (result, err) in
+            guard let res = result?.data?.addMealEntryToLog else {
+                 return
+            }
+            let entry = res.fragments.mealLogEntryDetails
+            APIService.activeMeals?.append(entry)
+            
         }
     }
 }

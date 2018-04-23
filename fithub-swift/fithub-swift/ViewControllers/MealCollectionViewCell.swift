@@ -35,9 +35,7 @@ class MealCollectionViewCell: UICollectionViewCell {
     
     private func addMeal() {
 //        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main )
-        apollo.perform(mutation: AddMealEntryToLogMutation(id: "logid", mealId: self.meal!.id, mealType: MEALTYPE(rawValue: "BREAKFAST"))) { (result, err) in
-            print(result?.data)
-        }
+        APIService.addMealToLog(mealId: self.meal!.id)
     }
     override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
         print("does this detect taps..?")

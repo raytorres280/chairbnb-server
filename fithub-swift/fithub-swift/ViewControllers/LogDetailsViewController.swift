@@ -16,7 +16,7 @@ class LogDetailsViewController: UIViewController {
     
     
     @IBOutlet weak var macrosProgress: MKRingProgressGroupView!
-    var log: LogDetails?
+    var log: LogDetails? = nil
     var proteins: Int = 0
     var carbs: Int = 0
     var fats: Int = 0
@@ -33,10 +33,14 @@ class LogDetailsViewController: UIViewController {
         //fats
         macrosProgress.ring3.startColor = UIColor(red:0.99, green:0.91, blue:0.30, alpha:1.0)
         
+        if(log != nil) {
+            proteins = (log!.meals!.reduce(0) {cntr, meal in meal.meal.proteins})
+            carbs = (log!.meals!.reduce(0) {cntr, meal in meal.meal.carbs})
+            fats = (log!.meals!.reduce(0) {cntr, meal in meal.meal.fats})
+        }
         macrosProgress.ring1.progress = Double(proteins) / 100
         macrosProgress.ring2.progress = Double(carbs) / 200
         macrosProgress.ring3.progress = Double(fats) / 50
-        
         
     }
 
@@ -44,7 +48,6 @@ class LogDetailsViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation

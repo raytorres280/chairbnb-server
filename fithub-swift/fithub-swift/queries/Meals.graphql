@@ -1,16 +1,20 @@
+fragment MealDetails on Meal {
+    id
+    name
+    calories
+    proteins
+    carbs
+    fats
+}
+
 query Meals {
     meals {
-        id
-        name
-        calories
-        proteins
-        carbs
-        fats
+        ...MealDetails
     }
 }
 
 mutation addMealEntryToLog($id: ID!, $mealId: ID!, $mealType: MEALTYPE) {
     addMealEntryToLog(id: $id, mealId: $mealId, mealType: $mealType) {
-        id
+        ...MealLogEntryDetails
     }
 }

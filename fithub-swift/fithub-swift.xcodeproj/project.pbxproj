@@ -57,7 +57,7 @@
 		9EECF71A2072CD17002D180D /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		9EECF71C2072D322002D180D /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		9EECF71E2072D412002D180D /* Meals.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Meals.graphql; sourceTree = "<group>"; };
-		9EF8C6E4206F7AB80085BD19 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CollectionViewCell.swift; path = "/Users/raymondtorres/Developer/chairbnb-swift/fithub-swift/fithub-swift/CollectionViewCell.swift"; sourceTree = "<absolute>"; };
+		9EF8C6E4206F7AB80085BD19 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CollectionViewCell.swift; path = "/Users/raymondtorres/Developer/fithub-swift/fithub-swift/fithub-swift/CollectionViewCell.swift"; sourceTree = "<absolute>"; };
 		9EFF101020835E520070B3AC /* MealLogEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealLogEntry.swift; sourceTree = "<group>"; };
 		9EFF10122083626A0070B3AC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9EFF101420836B2E0070B3AC /* Auth.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Auth.graphql; sourceTree = "<group>"; };

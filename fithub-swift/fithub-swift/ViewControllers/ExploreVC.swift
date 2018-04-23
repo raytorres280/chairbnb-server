@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import Charts
 import Apollo
 
 //let logsUpdateKey = "logs.update.data"
@@ -26,7 +25,7 @@ class ExploreVC: UIViewController, UICollectionViewDataSource, UICollectionViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         print("listview loaded..")
-        
+        self.navigationController?.isNavigationBarHidden = false
         logCollection.dataSource = self
         
         let newView = UIView()
@@ -81,61 +80,6 @@ class ExploreVC: UIViewController, UICollectionViewDataSource, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("selected a log in list", indexPath)
-        
-    }
-    
-    func fetchLogs() {
-        //TODO: move function to log service.
-        
-        //change id later when auth is done
-        apollo.fetch(query: LogsByUserIdQuery(id: "cjg8rogq7003l0131j3ue2vbs")) { (result, err) in
-            guard let logs = result?.data?.logs else {
-                return
-            }
-            print(logs.count)
-            let now = NSDate()
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-            //check latest against current date
-            let dateString = logs[0].createdAt
-            let date = dateFormatter.date(from: dateString)
-            
-            if(!NSCalendar.current.isDate(now as Date, inSameDayAs: date!)) {
-                print("this is not the current date. Create new log")
-                self.logs = logs.map { $0.fragments.logDetails }
-                self.createLog()
-            } else {
-                self.logs = logs.map { $0.fragments.logDetails }
-                self.logCollection.reloadData()
-            }
-            
-        }
-    }
-    
-    func createLog() {
-        //move this func to service
-        
-        
-        let userId = "cjg8rogq7003l0131j3ue2vbs" //fetch from local storage later
-        apollo.perform(mutation: CreateLogMutation(userId: userId)) {(result, err) in
-            print("created new log check for update")
-            print(result!.data!)
-            guard let res = result?.data?.log else {
-                return
-            }
-            self.logs.insert(res.fragments.logDetails, at: 0)
-//            self.logCollection.reloadData()
-            //move old active log to top of logs list
-            //unnecessary if gql watcher is setup correctly.
-            //                        apollo.fetch(query: LogsByUserIdQuery(id: "cjg8rogq7003l0131j3ue2vbs")) {(result, err) in
-            //                            guard let logsVC = storyboard.instantiateViewController(withIdentifier: "LogsVC") as? ExploreVC else {
-            //                                return
-            //                            }
-            //                            guard let logs = result?.data?.logs
-            //                        }
-            //make new log current active log.
-            //                dashboardVC.currentLog = res.fragments.logDetails
-        }
     }
 }
 
