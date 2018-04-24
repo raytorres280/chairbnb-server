@@ -47,10 +47,11 @@ class DashboardViewController: UIViewController {
             progress.ring1.progress = Double(proteins) / 100
             progress.ring2.progress = Double(carbs) / 200
             progress.ring3.progress = Double(fats) / 50
+            waterProgress.progress = Float((self.currentLog?.totalWater)!) / 64
+            caloriesBurnedProgress.progress = Float((self.currentLog?.caloriesBurned)!) / 300
         }
         
-        waterProgress.progress = Float((self.currentLog?.totalWater)!) / 64
-        caloriesBurnedProgress.progress = Float((self.currentLog?.caloriesBurned)!) / 300
+        
 //        caloriesProgress.progress = Float((self.currentLog?.caloriesBurned)!) / 300
     }
     

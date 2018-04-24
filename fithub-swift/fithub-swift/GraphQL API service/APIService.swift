@@ -19,7 +19,7 @@ class APIService {
         }
     }
     static var activeLog: LogDetails?
-    static var activeMeals: [MealLogEntryDetails]?
+    static var activeMeals = [MealLogEntryDetails]()
     
     private static func notify(){
         let name = Notification.Name(rawValue: "did.update.logs")
