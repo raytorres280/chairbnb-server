@@ -18,9 +18,21 @@ class APIService {
             APIService.notify()
         }
     }
-    static var activeLog: LogDetails?
-    static var activeMeals = [MealLogEntryDetails]()
+    static var activeLog: LogDetails? {
+        didSet {
+            APIService.notify()
+        }
+    }
+    static var activeMeals = [MealLogEntryDetails]() {
+        didSet {
+            APIService.notifyMealsEntries()
+        }
+    }
     
+    private static func notifyMealsEntries() {
+        let name = Notification.Name(rawValue: "did.update.meal.entries")
+        NotificationCenter.default.post(name: name, object: nil)
+    }
     private static func notify(){
         let name = Notification.Name(rawValue: "did.update.logs")
         NotificationCenter.default.post(name: name, object: nil)
@@ -43,7 +55,7 @@ class APIService {
             let meals = active.meals?.map {$0.fragments.mealLogEntryDetails}
             APIService.sharedInstance.logs = logs
             APIService.activeLog = active
-            APIService.activeMeals = meals
+            APIService.activeMeals = meals!
             if(!NSCalendar.current.isDate(now as Date, inSameDayAs: date!)) {
                 print("this is not the current date. Create new log")
                 APIService.createLog()//chaining async in swift??????
@@ -70,7 +82,7 @@ class APIService {
                  return
             }
             let entry = res.fragments.mealLogEntryDetails
-            APIService.activeMeals?.append(entry)
+            APIService.activeMeals.append(entry)
             
         }
     }

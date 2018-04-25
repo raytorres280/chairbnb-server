@@ -32,10 +32,8 @@ class DashboardViewController: UIViewController {
         super.viewDidLoad()
         print("dashboard loaded")
         self.navigationController?.isNavigationBarHidden = true
-        print(APIService.activeLog)
-        print(APIService.sharedInstance.logs)
-        // Do any additional setup after loading the view.
         self.currentLog = APIService.activeLog
+        createObservers()
         //proteins
         progress.ring1.startColor = UIColor(red:0.75, green:0.26, blue:0.26, alpha:1.0)
         //carbs
@@ -50,12 +48,10 @@ class DashboardViewController: UIViewController {
             waterProgress.progress = Float((self.currentLog?.totalWater)!) / 64
             caloriesBurnedProgress.progress = Float((self.currentLog?.caloriesBurned)!) / 300
         }
-        
-        
-//        caloriesProgress.progress = Float((self.currentLog?.caloriesBurned)!) / 300
+
     }
     
-    func createObservers() {
+    private func createObservers() {
         let didUpdateLogs = Notification.Name(rawValue: "did.update.logs")
         NotificationCenter.default.addObserver(self, selector: #selector(self.onObserverActionTrigger(notification:)), name: didUpdateLogs, object: nil)
     }

@@ -209,7 +209,7 @@
                         <viewLayoutGuide key="safeArea" id="szs-ok-omB"/>
                     </view>
                     <navigationItem key="navigationItem" id="CE9-Yb-3IA">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="WWj-F3-w8I">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="WWj-F3-w8I">
                             <connections>
                                 <action selector="cancelBtnPress:" destination="iac-VI-gLP" id="rvS-4i-dAw"/>
                             </connections>
@@ -578,7 +578,7 @@
                     <navigationItem key="navigationItem" title="Root View Controller" id="oKG-Ny-wxe">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="lja-09-O4i">
                             <connections>
-                                <segue destination="iac-VI-gLP" kind="show" id="XBh-8w-o13"/>
+                                <segue destination="iac-VI-gLP" kind="show" id="DUN-qb-ONo"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

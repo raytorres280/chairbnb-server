@@ -11,8 +11,7 @@ import UIKit
 class MealsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     
-    @IBAction func cancelBtnPress(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+    @IBAction func cancelBtnPress(_ sender: Any) { navigationController?.popViewController(animated: true)
     }
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var mealsCollection: UICollectionView!
@@ -34,7 +33,7 @@ class MealsViewController: UIViewController, UICollectionViewDataSource, UIColle
         // Dispose of anyd resources that can be recreated.
     }
     
-    func fetchMeals() {
+    private func fetchMeals() {
         apollo.fetch(query: MealsQuery()) { (result, err) in
             let meals = result?.data?.meals.map { meal -> Meal in
                 return Meal(id: meal.id, name: meal.name, calories: meal.calories, proteins: meal.proteins, carbs: meal.carbs, fats: meal.fats)
