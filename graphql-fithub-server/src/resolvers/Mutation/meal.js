@@ -1,5 +1,3 @@
-const { getUserId } = require('../../utils')
-
 const meal = {
   async addMealEntryToLog(parent, { id, mealId, mealType }, ctx, info) {
     return ctx.db.mutation.createMealLogEntry(
@@ -17,6 +15,15 @@ const meal = {
       info
     )
   },
+
+  async removeMealEntryFromLog(parent, { id }, ctx, info) {
+    return ctx.db.mutation.deleteMealLogEntry(
+        {
+          where: { id }
+        }
+      )
+  },
+
 }
 
 module.exports = { meal }

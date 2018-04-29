@@ -21,7 +21,8 @@ type Mutation {
   #cant do below since no push or pop scalar list functions atm. in prisma beta 3 as of 4/12
   #addMealToLog(id: ID!, mealId: ID!): Meal!
   #now using custom join table instead. insert into n:n table
-  addMealEntryToLog(id: ID!, mealId: ID!, mealType: MEALTYPE): MealLogEntry
+  addMealEntryToLog(id: ID!, mealId: ID!, mealType: MEALTYPE): MealLogEntry!
+  removeMealEntryFromLog(id: ID!): MealLogEntry!
 }
 
 type Subscription {
