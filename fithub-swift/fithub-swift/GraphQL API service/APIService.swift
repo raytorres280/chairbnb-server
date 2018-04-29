@@ -76,14 +76,27 @@ class APIService {
         }
     }
    
-    static func addMealToLog(mealId: String!) {
-        apollo.perform(mutation: AddMealEntryToLogMutation(id: APIService.activeLog!.id, mealId: mealId, mealType: MEALTYPE(rawValue: "BREAKFAST"))) { (result, err) in
+    static func addMealToLog(mealId: String!, type: MEALTYPE) {
+        apollo.perform(mutation: AddMealEntryToLogMutation(id: APIService.activeLog!.id, mealId: mealId, mealType: type)) { (result, err) in
             guard let res = result?.data?.addMealEntryToLog else {
                  return
             }
             let entry = res.fragments.mealLogEntryDetails
             APIService.activeMeals.append(entry)
-            
+        }
+    }
+    
+    static func removeMealFromLog(mealEntryId: String!) {
+        print("delete item")
+        apollo.perform(mutation: RemoveMealEntryFromLogMutation(id: mealEntryId)) { (result, err) in
+            guard let res = result?.data?.removeMealEntryFromLog else {
+                return
+            }
+            let entry = res.fragments.mealLogEntryDetails
+            let index = APIService.activeMeals.index(where: { item in
+                entry.id == item.id
+            })
+            APIService.activeMeals.remove(at: index!)
         }
     }
 }

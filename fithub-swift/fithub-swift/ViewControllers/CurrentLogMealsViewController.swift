@@ -16,23 +16,33 @@ import UIKit
 
 class CurrentLogMealsViewController: UITableViewController {
 
-    var meals = [MealLogEntryDetails]() {
+    
+    let sections = ["Breakfast", "Lunch", "Dinner", "Snacks"]
+    var breakfastEntries = [MealLogEntryDetails]() {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+    var lunchEntries = [MealLogEntryDetails]() {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+    var dinnerEntries = [MealLogEntryDetails]() {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+    var snacksEntries = [MealLogEntryDetails]() {
         didSet {
             self.tableView.reloadData()
         }
     }
     
-    let sections = ["Breakfast", "Lunch", "Dinner", "Snacks"]
-    var breakfastEntries = [MealLogEntryDetails]()
-    var lunchEntries = [MealLogEntryDetails]()
-    var dinnerEntries = [MealLogEntryDetails]()
-    var snacksEntries = [MealLogEntryDetails]()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         createObservers()
-        meals = APIService.activeMeals
-        createListsForCategories(meals: self.meals)
+        createListsForCategories(meals: APIService.activeMeals)
         // Do any additional setup after loading the view.
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
     }
@@ -44,16 +54,36 @@ class CurrentLogMealsViewController: UITableViewController {
     
     @objc func onObserverActionTrigger(notification: NSNotification) {
         print("observer detected update successfully.")
-        self.meals = APIService.activeMeals
-        createListsForCategories(meals: self.meals)
+        createListsForCategories(meals: APIService.activeMeals)
     }
     
     private func createListsForCategories(meals: [MealLogEntryDetails]) {
         breakfastEntries = meals.filter({item in item.mealType == MEALTYPE.breakfast})
         lunchEntries = meals.filter({item in item.mealType == MEALTYPE.lunch})
-        dinnerEntries = meals.filter({item in item.mealType == MEALTYPE.breakfast})
+        dinnerEntries = meals.filter({item in item.mealType == MEALTYPE.dinner})
         snacksEntries = meals.filter({item in item.mealType == MEALTYPE.snack})
         
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            var meal: MealLogEntryDetails
+            switch sections[indexPath.section] {
+            case "Breakfast":
+                meal = breakfastEntries.remove(at: indexPath.row)
+            case "Lunch":
+                meal = lunchEntries.remove(at: indexPath.row)
+            case "Dinner":
+                meal = dinnerEntries.remove(at: indexPath.row)
+            case "Snacks":
+                meal = snacksEntries.remove(at: indexPath.row)
+            default:
+                print("error with removing meal from correct section")
+                return
+            }
+//            tableView.deleteRows(at: [indexPath], with: .automatic)
+            APIService.removeMealFromLog(mealEntryId: meal.id)
+        }
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -67,27 +97,37 @@ class CurrentLogMealsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(section == 0) {
-            return self.meals.count
-        } else {
-            switch sections[section] {
-            case "Breakfast":
-                return breakfastEntries.count
-            case "Lunch":
-                return lunchEntries.count
-            case "Dinner":
-                return dinnerEntries.count
-            case "Snacks":
-                return snacksEntries.count
-            default:
-                return self.meals.count
-            }
+        switch sections[section] {
+        case "Breakfast":
+            return breakfastEntries.count
+        case "Lunch":
+            return lunchEntries.count
+        case "Dinner":
+            return dinnerEntries.count
+        case "Snacks":
+            return snacksEntries.count
+        default:
+            return 0
         }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
-        cell.textLabel?.text = "hello from cell \(indexPath)"
+        var entry: MealLogEntryDetails
+        switch sections[indexPath.section] {
+        case "Breakfast":
+            entry = breakfastEntries[indexPath.row]
+        case "Lunch":
+            entry = lunchEntries[indexPath.row]
+        case "Dinner":
+            entry = dinnerEntries[indexPath.row]
+        case "Snacks":
+            entry = snacksEntries[indexPath.row]
+        default:
+            entry = breakfastEntries[indexPath.row]
+            print("error finding section for cell")
+        }
+        cell.textLabel?.text = "Name: \(entry.meal.name), id: \(entry.id)"
         return cell
         
     }

@@ -15,19 +15,36 @@ class MealsViewController: UIViewController, UICollectionViewDataSource, UIColle
     }
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var mealsCollection: UICollectionView!
+    @IBOutlet weak var segments: UISegmentedControl!
     
     var meals = [Meal]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mealsCollection.dataSource = self
+        mealsCollection.delegate = self
         fetchMeals()
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("selected")
-        print(indexPath)
+        var type: MEALTYPE
+        switch segments.selectedSegmentIndex {
+        case 0:
+            type = MEALTYPE.breakfast
+        case 1:
+            type = MEALTYPE.lunch
+        case 2:
+            type = MEALTYPE.dinner
+        case 3:
+            type = MEALTYPE.snack
+        default:
+            type = MEALTYPE.snack
+        }
+        let item = mealsCollection.cellForItem(at: indexPath) as! MealCollectionViewCell
+        APIService.addMealToLog(mealId: item.meal?.id, type: type)
+        self.navigationController?.popViewController(animated: true)
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of anyd resources that can be recreated.

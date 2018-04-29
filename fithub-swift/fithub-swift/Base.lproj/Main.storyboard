@@ -93,21 +93,21 @@
                                                     <constraint firstAttribute="height" constant="729" id="Rtt-ZW-orp"/>
                                                 </constraints>
                                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cQH-pd-IwZ">
-                                                    <size key="itemSize" width="300" height="132"/>
+                                                    <size key="itemSize" width="300" height="178"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="mealCell" id="CrS-ac-6sY" userLabel="mealCell" customClass="MealCollectionViewCell" customModule="fithub_swift" customModuleProvider="target">
-                                                        <rect key="frame" x="37.666666666666664" y="0.0" width="300" height="132"/>
+                                                        <rect key="frame" x="37.666666666666664" y="0.0" width="300" height="178"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                            <rect key="frame" x="0.0" y="0.0" width="300" height="132"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="300" height="178"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="boy-mV-RgF">
-                                                                    <rect key="frame" x="141" y="15" width="159" height="102"/>
+                                                                    <rect key="frame" x="141" y="38" width="159" height="102"/>
                                                                     <subviews>
                                                                         <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="kq8-sB-aea" userLabel="ProteinProgress">
                                                                             <rect key="frame" x="0.0" y="0.0" width="159" height="2"/>
@@ -209,20 +209,32 @@
                         <viewLayoutGuide key="safeArea" id="szs-ok-omB"/>
                     </view>
                     <navigationItem key="navigationItem" id="CE9-Yb-3IA">
+                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="WWj-F3-w8I">
                             <connections>
                                 <action selector="cancelBtnPress:" destination="iac-VI-gLP" id="rvS-4i-dAw"/>
                             </connections>
                         </barButtonItem>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="u6q-Oi-dP5" userLabel="Meal Type">
+                            <rect key="frame" x="77.666666666666657" y="7" width="289.33333333333337" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Breakfast"/>
+                                <segment title="Lunch"/>
+                                <segment title="Dinner"/>
+                                <segment title="Snack"/>
+                            </segments>
+                        </segmentedControl>
                     </navigationItem>
                     <connections>
                         <outlet property="mealsCollection" destination="scr-2U-Yo4" id="7sg-ob-G74"/>
                         <outlet property="scrollView" destination="oOd-mo-1aw" id="8E7-S5-wgF"/>
+                        <outlet property="segments" destination="u6q-Oi-dP5" id="Jm6-UR-oXU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NRi-Zb-gbW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-545" y="2721"/>
+            <point key="canvasLocation" x="-546.39999999999998" y="2720.6896551724139"/>
         </scene>
         <!--Logs-->
         <scene sceneID="lOd-Sh-Krz">

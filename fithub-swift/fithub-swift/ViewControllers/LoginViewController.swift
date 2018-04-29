@@ -36,6 +36,7 @@ class LoginViewController: UIViewController {
     private func login() {
         print("logging in..")
         //if server response is okay, save email and password
+        //cjgbs9ch600760131g366xhab
         apollo.perform(mutation: LoginMutation(email: "test@aol.com", password: "nooneknows")) { (result, err) in
             guard let userId = result?.data?.login.user.id else {
                 return
@@ -60,8 +61,8 @@ class LoginViewController: UIViewController {
     
     private func goToMainTabView() {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let main = storyboard.instantiateViewController(withIdentifier: "MainTabs") as? UIViewController
-        present(main!, animated: false, completion: nil)
+        let main = storyboard.instantiateViewController(withIdentifier: "MainTabs") as! UIViewController
+        present(main, animated: false, completion: nil)
     }
     /*
     // MARK: - Navigation

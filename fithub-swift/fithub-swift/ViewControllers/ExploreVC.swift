@@ -28,12 +28,6 @@ class ExploreVC: UIViewController, UICollectionViewDataSource, UICollectionViewD
         self.navigationController?.isNavigationBarHidden = false
         logCollection.dataSource = self
         
-        let newView = UIView()
-        newView.backgroundColor = UIColor.blue
-        
-        //fetch logs from graphQL server API
-        print(APIService.activeLog)
-        print(APIService.sharedInstance.logs)
         self.logs = APIService.sharedInstance.logs
         createObservers()
     }

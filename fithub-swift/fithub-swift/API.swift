@@ -1120,7 +1120,7 @@ public final class AddMealEntryToLogMutation: GraphQLMutation {
     public static let possibleTypes = ["Mutation"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("addMealEntryToLog", arguments: ["id": GraphQLVariable("id"), "mealId": GraphQLVariable("mealId"), "mealType": GraphQLVariable("mealType")], type: .object(AddMealEntryToLog.selections)),
+      GraphQLField("addMealEntryToLog", arguments: ["id": GraphQLVariable("id"), "mealId": GraphQLVariable("mealId"), "mealType": GraphQLVariable("mealType")], type: .nonNull(.object(AddMealEntryToLog.selections))),
     ]
 
     public var snapshot: Snapshot
@@ -1129,20 +1129,254 @@ public final class AddMealEntryToLogMutation: GraphQLMutation {
       self.snapshot = snapshot
     }
 
-    public init(addMealEntryToLog: AddMealEntryToLog? = nil) {
-      self.init(snapshot: ["__typename": "Mutation", "addMealEntryToLog": addMealEntryToLog.flatMap { (value: AddMealEntryToLog) -> Snapshot in value.snapshot }])
+    public init(addMealEntryToLog: AddMealEntryToLog) {
+      self.init(snapshot: ["__typename": "Mutation", "addMealEntryToLog": addMealEntryToLog.snapshot])
     }
 
-    public var addMealEntryToLog: AddMealEntryToLog? {
+    public var addMealEntryToLog: AddMealEntryToLog {
       get {
-        return (snapshot["addMealEntryToLog"] as? Snapshot).flatMap { AddMealEntryToLog(snapshot: $0) }
+        return AddMealEntryToLog(snapshot: snapshot["addMealEntryToLog"]! as! Snapshot)
       }
       set {
-        snapshot.updateValue(newValue?.snapshot, forKey: "addMealEntryToLog")
+        snapshot.updateValue(newValue.snapshot, forKey: "addMealEntryToLog")
       }
     }
 
     public struct AddMealEntryToLog: GraphQLSelectionSet {
+      public static let possibleTypes = ["MealLogEntry"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+        GraphQLField("meal", type: .nonNull(.object(Meal.selections))),
+        GraphQLField("mealType", type: .scalar(MEALTYPE.self)),
+      ]
+
+      public var snapshot: Snapshot
+
+      public init(snapshot: Snapshot) {
+        self.snapshot = snapshot
+      }
+
+      public init(id: GraphQLID, meal: Meal, mealType: MEALTYPE? = nil) {
+        self.init(snapshot: ["__typename": "MealLogEntry", "id": id, "meal": meal.snapshot, "mealType": mealType])
+      }
+
+      public var __typename: String {
+        get {
+          return snapshot["__typename"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: GraphQLID {
+        get {
+          return snapshot["id"]! as! GraphQLID
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      public var meal: Meal {
+        get {
+          return Meal(snapshot: snapshot["meal"]! as! Snapshot)
+        }
+        set {
+          snapshot.updateValue(newValue.snapshot, forKey: "meal")
+        }
+      }
+
+      public var mealType: MEALTYPE? {
+        get {
+          return snapshot["mealType"] as? MEALTYPE
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "mealType")
+        }
+      }
+
+      public var fragments: Fragments {
+        get {
+          return Fragments(snapshot: snapshot)
+        }
+        set {
+          snapshot += newValue.snapshot
+        }
+      }
+
+      public struct Fragments {
+        public var snapshot: Snapshot
+
+        public var mealLogEntryDetails: MealLogEntryDetails {
+          get {
+            return MealLogEntryDetails(snapshot: snapshot)
+          }
+          set {
+            snapshot += newValue.snapshot
+          }
+        }
+      }
+
+      public struct Meal: GraphQLSelectionSet {
+        public static let possibleTypes = ["Meal"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+          GraphQLField("name", type: .nonNull(.scalar(String.self))),
+          GraphQLField("calories", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("proteins", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("carbs", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("fats", type: .nonNull(.scalar(Int.self))),
+        ]
+
+        public var snapshot: Snapshot
+
+        public init(snapshot: Snapshot) {
+          self.snapshot = snapshot
+        }
+
+        public init(id: GraphQLID, name: String, calories: Int, proteins: Int, carbs: Int, fats: Int) {
+          self.init(snapshot: ["__typename": "Meal", "id": id, "name": name, "calories": calories, "proteins": proteins, "carbs": carbs, "fats": fats])
+        }
+
+        public var __typename: String {
+          get {
+            return snapshot["__typename"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: GraphQLID {
+          get {
+            return snapshot["id"]! as! GraphQLID
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        public var name: String {
+          get {
+            return snapshot["name"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "name")
+          }
+        }
+
+        public var calories: Int {
+          get {
+            return snapshot["calories"]! as! Int
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "calories")
+          }
+        }
+
+        public var proteins: Int {
+          get {
+            return snapshot["proteins"]! as! Int
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "proteins")
+          }
+        }
+
+        public var carbs: Int {
+          get {
+            return snapshot["carbs"]! as! Int
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "carbs")
+          }
+        }
+
+        public var fats: Int {
+          get {
+            return snapshot["fats"]! as! Int
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "fats")
+          }
+        }
+
+        public var fragments: Fragments {
+          get {
+            return Fragments(snapshot: snapshot)
+          }
+          set {
+            snapshot += newValue.snapshot
+          }
+        }
+
+        public struct Fragments {
+          public var snapshot: Snapshot
+
+          public var mealDetails: MealDetails {
+            get {
+              return MealDetails(snapshot: snapshot)
+            }
+            set {
+              snapshot += newValue.snapshot
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+public final class RemoveMealEntryFromLogMutation: GraphQLMutation {
+  public static let operationString =
+    "mutation removeMealEntryFromLog($id: ID!) {\n  removeMealEntryFromLog(id: $id) {\n    __typename\n    ...MealLogEntryDetails\n  }\n}"
+
+  public static var requestString: String { return operationString.appending(MealLogEntryDetails.fragmentString).appending(MealDetails.fragmentString) }
+
+  public var id: GraphQLID
+
+  public init(id: GraphQLID) {
+    self.id = id
+  }
+
+  public var variables: GraphQLMap? {
+    return ["id": id]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Mutation"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("removeMealEntryFromLog", arguments: ["id": GraphQLVariable("id")], type: .nonNull(.object(RemoveMealEntryFromLog.selections))),
+    ]
+
+    public var snapshot: Snapshot
+
+    public init(snapshot: Snapshot) {
+      self.snapshot = snapshot
+    }
+
+    public init(removeMealEntryFromLog: RemoveMealEntryFromLog) {
+      self.init(snapshot: ["__typename": "Mutation", "removeMealEntryFromLog": removeMealEntryFromLog.snapshot])
+    }
+
+    public var removeMealEntryFromLog: RemoveMealEntryFromLog {
+      get {
+        return RemoveMealEntryFromLog(snapshot: snapshot["removeMealEntryFromLog"]! as! Snapshot)
+      }
+      set {
+        snapshot.updateValue(newValue.snapshot, forKey: "removeMealEntryFromLog")
+      }
+    }
+
+    public struct RemoveMealEntryFromLog: GraphQLSelectionSet {
       public static let possibleTypes = ["MealLogEntry"]
 
       public static let selections: [GraphQLSelection] = [

@@ -18,3 +18,9 @@ mutation addMealEntryToLog($id: ID!, $mealId: ID!, $mealType: MEALTYPE) {
         ...MealLogEntryDetails
     }
 }
+
+mutation removeMealEntryFromLog($id: ID!) {
+    removeMealEntryFromLog(id: $id) {
+        ...MealLogEntryDetails
+    }
+}
