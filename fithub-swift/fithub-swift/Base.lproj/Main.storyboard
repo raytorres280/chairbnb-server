@@ -20,11 +20,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="08i-d1-VxD" userLabel="Macros Group Progress" customClass="MKRingProgressGroupView" customModule="fithub_swift">
-                                <rect key="frame" x="86" y="188" width="202" height="202"/>
+                                <rect key="frame" x="61" y="181" width="252" height="253"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </view>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fyJ-p9-H2H" userLabel="Calories Consumed Progress">
-                                <rect key="frame" x="118" y="104" width="171" height="2"/>
+                                <rect key="frame" x="86" y="104" width="227" height="2"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="progressTintColor" red="0.99952012300000004" green="0.8488656282" blue="0.23155790570000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </progressView>
@@ -42,10 +42,6 @@
                                 <rect key="frame" x="86" y="567" width="23" height="23"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="light" translatesAutoresizingMaskIntoConstraints="NO" id="tov-Ho-h25">
-                                <rect key="frame" x="85" y="93" width="24" height="24"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="drop" translatesAutoresizingMaskIntoConstraints="NO" id="N7h-AO-gQj">
                                 <rect key="frame" x="86" y="476" width="23" height="24"/>
                                 <autoresizingMask key="autoresizingMask"/>
@@ -55,7 +51,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.51709580420000001" green="0.86015087369999998" blue="0.99860531090000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="waterStepper:" destination="ypM-8p-dp0" eventType="valueChanged" id="dOE-rA-MxC"/>
+                                </connections>
                             </stepper>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="light" translatesAutoresizingMaskIntoConstraints="NO" id="tov-Ho-h25">
+                                <rect key="frame" x="61" y="93" width="24" height="24"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tJr-Rh-U8V"/>
                     </view>
@@ -70,7 +73,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JnO-54-ZEW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4308" y="1892"/>
+            <point key="canvasLocation" x="-4308" y="1891.6256157635469"/>
         </scene>
         <!--Meals View Controller-->
         <scene sceneID="dOY-P0-Beu">
@@ -321,46 +324,76 @@
         <!--Run-->
         <scene sceneID="fZ5-QH-chO">
             <objects>
-                <viewController id="1Zq-bG-yR9" sceneMemberID="viewController">
+                <viewController id="1Zq-bG-yR9" customClass="RunViewController" customModule="fithub_swift" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bj1-UX-dtG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="vz8-yj-G4d">
-                                <rect key="frame" x="0.0" y="44" width="375" height="495"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </mapView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hgi-pv-cab" userLabel="Button Container View">
-                                <rect key="frame" x="0.0" y="547" width="375" height="152"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="w2a-an-Ysq">
+                                <rect key="frame" x="0.0" y="44" width="375" height="647"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rts-1b-XNk">
-                                        <rect key="frame" x="8" y="61" width="359" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Reset"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mAT-2m-kG8">
-                                        <rect key="frame" x="8" y="114" width="359" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Save"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z8T-nf-Oy2">
-                                        <rect key="frame" x="8" y="8" width="359" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Start/Stop"/>
-                                    </button>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="vz8-yj-G4d">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="483"/>
+                                    </mapView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hgi-pv-cab" userLabel="Button Container View">
+                                        <rect key="frame" x="0.0" y="483" width="375" height="164"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rts-1b-XNk">
+                                                <rect key="frame" x="8" y="61" width="359" height="30"/>
+                                                <state key="normal" title="Reset"/>
+                                                <connections>
+                                                    <action selector="onResetBtn:" destination="1Zq-bG-yR9" eventType="touchUpInside" id="5hl-5P-GeZ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mAT-2m-kG8">
+                                                <rect key="frame" x="8" y="114" width="359" height="30"/>
+                                                <state key="normal" title="Save"/>
+                                                <connections>
+                                                    <action selector="onSaveBtn:" destination="1Zq-bG-yR9" eventType="touchUpInside" id="UXP-sH-aUL"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z8T-nf-Oy2">
+                                                <rect key="frame" x="8" y="8" width="359" height="30"/>
+                                                <state key="normal" title="Start/Stop"/>
+                                                <connections>
+                                                    <action selector="onStartStop:" destination="1Zq-bG-yR9" eventType="touchUpInside" id="mKh-A2-9Ze"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.99952012300000004" green="0.8488656282" blue="0.23155790570000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="z8T-nf-Oy2" firstAttribute="trailing" secondItem="hgi-pv-cab" secondAttribute="trailingMargin" id="3YV-kg-wne"/>
+                                            <constraint firstItem="z8T-nf-Oy2" firstAttribute="trailing" secondItem="rts-1b-XNk" secondAttribute="trailing" id="BoL-kj-i7f"/>
+                                            <constraint firstItem="z8T-nf-Oy2" firstAttribute="leading" secondItem="hgi-pv-cab" secondAttribute="leadingMargin" id="YcW-Mr-4WZ"/>
+                                            <constraint firstItem="rts-1b-XNk" firstAttribute="top" secondItem="z8T-nf-Oy2" secondAttribute="bottom" constant="23" id="aDX-ka-gr4"/>
+                                            <constraint firstItem="rts-1b-XNk" firstAttribute="trailing" secondItem="mAT-2m-kG8" secondAttribute="trailing" id="mXA-FG-THQ"/>
+                                            <constraint firstItem="mAT-2m-kG8" firstAttribute="top" secondItem="rts-1b-XNk" secondAttribute="bottom" constant="23" id="n3Z-Cf-YHp"/>
+                                            <constraint firstAttribute="bottom" secondItem="mAT-2m-kG8" secondAttribute="bottom" constant="20" id="pch-i8-PSG"/>
+                                            <constraint firstItem="z8T-nf-Oy2" firstAttribute="top" secondItem="hgi-pv-cab" secondAttribute="topMargin" id="qcQ-Ec-QCx"/>
+                                            <constraint firstItem="z8T-nf-Oy2" firstAttribute="leading" secondItem="rts-1b-XNk" secondAttribute="leading" id="wyF-LL-ZFC"/>
+                                            <constraint firstItem="rts-1b-XNk" firstAttribute="leading" secondItem="mAT-2m-kG8" secondAttribute="leading" id="xYe-BP-L97"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.99952012300000004" green="0.8488656282" blue="0.23155790570000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="w2a-an-Ysq" firstAttribute="leading" secondItem="bj1-UX-dtG" secondAttribute="leading" id="DeK-jq-Wd5"/>
+                            <constraint firstItem="w2a-an-Ysq" firstAttribute="top" secondItem="dGH-5g-7Dc" secondAttribute="top" id="XiD-pC-dFq"/>
+                            <constraint firstAttribute="trailing" secondItem="w2a-an-Ysq" secondAttribute="trailing" id="twd-Mz-4pp"/>
+                            <constraint firstItem="dGH-5g-7Dc" firstAttribute="bottom" secondItem="w2a-an-Ysq" secondAttribute="bottom" constant="38" id="vYr-Ul-GnP"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="dGH-5g-7Dc"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Run" image="runer-silhouette-running-fast" id="2P3-lZ-crZ"/>
+                    <connections>
+                        <outlet property="map" destination="vz8-yj-G4d" id="DYO-vA-JGW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MQ2-nB-KFo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2396" y="1892"/>
+            <point key="canvasLocation" x="-2396" y="1891.6256157635469"/>
         </scene>
         <!--Logs List View Controller-->
         <scene sceneID="jj5-wh-Sj3">
@@ -564,10 +597,10 @@
             </objects>
             <point key="canvasLocation" x="-4138" y="2721"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Meal Entry View Controller-->
         <scene sceneID="6up-kc-vkT">
             <objects>
-                <tableViewController storyboardIdentifier="DailyMeals" id="x9O-9x-IjH" customClass="CurrentLogMealsViewController" customModule="fithub_swift" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="DailyMeals" id="x9O-9x-IjH" userLabel="Meal Entry View Controller" customClass="CurrentLogMealsViewController" customModule="fithub_swift" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ye4-FQ-hkS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -620,7 +653,7 @@
     <resources>
         <image name="drop" width="85" height="85"/>
         <image name="flame" width="85" height="85"/>
-        <image name="fork-and-knife-silhouette" width="25" height="25"/>
+        <image name="fork-and-knife-silhouette" width="25" height="21"/>
         <image name="icons8-menu-50" width="25" height="25"/>
         <image name="light" width="85" height="85"/>
         <image name="pie-chart" width="25" height="25"/>

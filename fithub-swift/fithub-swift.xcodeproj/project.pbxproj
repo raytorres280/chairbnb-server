@@ -11,6 +11,8 @@
 		9E02E9DF1FB7A6E400F6821C /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E02E9DE1FB7A6E400F6821C /* Log.swift */; };
 		9E242A6B207E93A400FFD8F4 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E242A6A207E93A400FFD8F4 /* DashboardViewController.swift */; };
 		9E242A6D207E93B700FFD8F4 /* MealsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E242A6C207E93B700FFD8F4 /* MealsViewController.swift */; };
+		9E4CCEE620966BA600D9880C /* RunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4CCEE520966BA500D9880C /* RunViewController.swift */; };
+		9E4CCEE82096F55100D9880C /* Assets 02-54-34-463.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E4CCEE72096F55000D9880C /* Assets 02-54-34-463.xcassets */; };
 		9E5D10432077466A009143BF /* LogDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5D10422077466A009143BF /* LogDetailsViewController.swift */; };
 		9E6996241FB57B590057A43A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6996231FB57B590057A43A /* AppDelegate.swift */; };
 		9E69962D1FB57B5A0057A43A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E69962B1FB57B5A0057A43A /* Main.storyboard */; };
@@ -40,6 +42,8 @@
 		9E02E9DE1FB7A6E400F6821C /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		9E242A6A207E93A400FFD8F4 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		9E242A6C207E93B700FFD8F4 /* MealsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsViewController.swift; sourceTree = "<group>"; };
+		9E4CCEE520966BA500D9880C /* RunViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunViewController.swift; sourceTree = "<group>"; };
+		9E4CCEE72096F55000D9880C /* Assets 02-54-34-463.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "Assets 02-54-34-463.xcassets"; path = "../../../../.Trash/Assets 02-54-34-463.xcassets"; sourceTree = "<group>"; };
 		9E5D10422077466A009143BF /* LogDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDetailsViewController.swift; sourceTree = "<group>"; };
 		9E6996201FB57B590057A43A /* fithub-swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "fithub-swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E6996231FB57B590057A43A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -53,7 +57,6 @@
 		9E9E792D2089CABA009DDC70 /* User.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = User.xcdatamodel; sourceTree = "<group>"; };
 		9EA92D1B207173590069317C /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		9EC2555D20792A2A00A7088C /* MKRingProgressGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MKRingProgressGroupView.swift; path = "fithub-swift/ViewControllers/MKRingProgressGroupView.swift"; sourceTree = SOURCE_ROOT; };
-		9ED0ADEC208EEBAE00C1AF5A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9ED0ADED208F0CA500C1AF5A /* CurrentLogMealsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLogMealsViewController.swift; sourceTree = "<group>"; };
 		9EECF71A2072CD17002D180D /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		9EECF71C2072D322002D180D /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
@@ -126,7 +129,7 @@
 				9E6996301FB57B5A0057A43A /* LaunchScreen.storyboard */,
 				9E6996331FB57B5A0057A43A /* Info.plist */,
 				9E9E792C2089CABA009DDC70 /* fithub-swift.xcdatamodeld */,
-				9ED0ADEC208EEBAE00C1AF5A /* Assets.xcassets */,
+				9E4CCEE72096F55000D9880C /* Assets 02-54-34-463.xcassets */,
 			);
 			path = "fithub-swift";
 			sourceTree = "<group>";
@@ -162,6 +165,7 @@
 				9E940FA2207F114C006F4C7B /* MealCollectionViewCell.swift */,
 				9EFF10122083626A0070B3AC /* LoginViewController.swift */,
 				9ED0ADED208F0CA500C1AF5A /* CurrentLogMealsViewController.swift */,
+				9E4CCEE520966BA500D9880C /* RunViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -244,6 +248,7 @@
 				9E6996321FB57B5A0057A43A /* LaunchScreen.storyboard in Resources */,
 				9EECF71F2072D412002D180D /* Meals.graphql in Resources */,
 				9E69962D1FB57B5A0057A43A /* Main.storyboard in Resources */,
+				9E4CCEE82096F55100D9880C /* Assets 02-54-34-463.xcassets in Resources */,
 				9EFF101520836B2E0070B3AC /* Auth.graphql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,6 +344,7 @@
 				9E83205920872817008935A8 /* APIService.swift in Sources */,
 				9E940FA3207F114C006F4C7B /* MealCollectionViewCell.swift in Sources */,
 				9E9E792E2089CABA009DDC70 /* fithub-swift.xcdatamodeld in Sources */,
+				9E4CCEE620966BA600D9880C /* RunViewController.swift in Sources */,
 				9E5D10432077466A009143BF /* LogDetailsViewController.swift in Sources */,
 				9EC2555E20792A2A00A7088C /* MKRingProgressGroupView.swift in Sources */,
 				9EA92D1C207173590069317C /* Meal.swift in Sources */,

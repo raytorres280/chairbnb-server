@@ -15,6 +15,11 @@ class DashboardViewController: UIViewController {
     var currentLog: LogDetails? = nil
     var anotherTest: String?
     
+    @IBAction func waterStepper(_ sender: UIStepper) {
+        print(sender.value)
+        self.waterIntake = Int(sender.value)
+        waterProgress.progress = Float(sender.value) / 64
+    }
     @IBOutlet weak var progress: MKRingProgressGroupView!
     
     @IBOutlet weak var caloriesProgress: UIProgressView!
@@ -24,45 +29,88 @@ class DashboardViewController: UIViewController {
     var proteins: Int = 0
     var carbs: Int = 0
     var fats: Int = 0
+    var caloriesConsumed: Int = 0
+    var caloriesBurned: Int = 0
+    var waterIntake: Int = 0
     
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("dashboard loaded")
         self.navigationController?.isNavigationBarHidden = true
-        self.currentLog = APIService.activeLog
         createObservers()
-        //proteins
-        progress.ring1.startColor = UIColor(red:0.75, green:0.26, blue:0.26, alpha:1.0)
-        //carbs
-        progress.ring2.startColor = UIColor(red:0.61, green:0.77, blue:0.24, alpha:1.0)
-        //fats
-        progress.ring3.startColor = UIColor(red:0.99, green:0.91, blue:0.30, alpha:1.0)
-        
+        styleProgressRings()
+        self.currentLog = APIService.activeLog
         if(self.currentLog != nil) {
-            progress.ring1.progress = Double(proteins) / 100
-            progress.ring2.progress = Double(carbs) / 200
-            progress.ring3.progress = Double(fats) / 50
-            waterProgress.progress = Float((self.currentLog?.totalWater)!) / 64
-            caloriesBurnedProgress.progress = Float((self.currentLog?.caloriesBurned)!) / 300
+            calculateMacros()
+            calculateProgress()
         }
 
     }
     
     private func createObservers() {
         let didUpdateLogs = Notification.Name(rawValue: "did.update.logs")
-        NotificationCenter.default.addObserver(self, selector: #selector(self.onObserverActionTrigger(notification:)), name: didUpdateLogs, object: nil)
+        let didUpdateMeals = Notification.Name(rawValue: "did.update.meal.entries")
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.onNewActiveLog(notification:)), name: didUpdateLogs, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.onActiveMealsUpdate(notification:)), name: didUpdateMeals, object: nil)
     }
     
-    @objc func onObserverActionTrigger(notification: NSNotification) {
+    @objc func onNewActiveLog(notification: NSNotification) {
         print("observer detected update successfully.")
         self.currentLog = APIService.activeLog
+        calculateMacros()
+        calculateProgress()
+        
+    }
+    
+    @objc func onActiveMealsUpdate(notification: NSNotification) {
+        calculateMacros()
+        calculateProgress()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    private func calculateMacros() -> Void {
+        self.proteins = APIService.activeMeals.reduce(0, {(counter, item) in
+            return item.meal.proteins + counter
+        })
+        self.carbs = APIService.activeMeals.reduce(0, {(counter, item) in
+            return item.meal.carbs + counter
+        })
+        
+        self.fats = APIService.activeMeals.reduce(0, {(counter, item) in
+            return item.meal.carbs + counter
+        })
+        
+        self.caloriesConsumed = APIService.activeMeals.reduce(0, {(counter, item) in
+            return item.meal.calories + counter
+        })
+        
+        self.waterIntake = APIService.activeLog!.totalWater!
+    }
+    
+    private func styleProgressRings() -> Void {
+        //proteins
+        progress.ring1.startColor = UIColor.cyan
+        progress.ring1.endColor = UIColor.cyan
+        //carbs
+        progress.ring2.startColor = UIColor.magenta
+        progress.ring2.endColor = UIColor.magenta
+        //fats
+        progress.ring3.startColor = UIColor.yellow
+        progress.ring3.endColor = UIColor.yellow
+    }
+    
+    private func calculateProgress() -> Void {
+        progress.ring1.progress = Double(proteins) / 100
+        progress.ring2.progress = Double(carbs) / 200
+        progress.ring3.progress = Double(fats) / 50
+        waterProgress.progress = Float((self.currentLog?.totalWater)!) / 64
+        caloriesBurnedProgress.progress = Float((self.currentLog?.caloriesBurned)!) / 300
     }
     /*
     // MARK: - Navigation
