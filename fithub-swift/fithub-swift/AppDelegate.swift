@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        print("reopened app")
+        print("opened app")
         
         let context = self.persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         do {
             let results = try context.fetch(request)
             if(results.count == 1) {
-                print("loggedin, refetch data")
+                //found stored user
                 APIService.fetchLogs()
                 print(results.description)
                 
@@ -58,8 +58,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
                 self.window?.rootViewController = vc
                 self.window?.makeKeyAndVisible()
-                
-                //refetch app data
             } else if(results.count > 1) {
                 print("results count not one")
                 for managedObject in results
@@ -119,6 +117,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
+    }
+    
+    private func wipeCoreData() -> Void {
+        
+    }
+    
+    private func compareLocalUserToDB() -> Void {
+        
     }
 
 }

@@ -19,10 +19,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="08i-d1-VxD" userLabel="Macros Group Progress" customClass="MKRingProgressGroupView" customModule="fithub_swift">
-                                <rect key="frame" x="61" y="181" width="252" height="253"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </view>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fyJ-p9-H2H" userLabel="Calories Consumed Progress">
                                 <rect key="frame" x="86" y="104" width="227" height="2"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -59,6 +55,10 @@
                                 <rect key="frame" x="61" y="93" width="24" height="24"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="08i-d1-VxD" userLabel="Macros Group Progress" customClass="MKRingProgressGroupView" customModule="fithub_swift">
+                                <rect key="frame" x="61" y="173" width="252" height="253"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tJr-Rh-U8V"/>
                     </view>

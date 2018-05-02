@@ -99,4 +99,10 @@ class APIService {
             APIService.activeMeals.remove(at: index!)
         }
     }
+    
+    static func fetchUser() -> Void {
+        //return userdetails.
+        //call login resolver, if you get back data, match user ID's
+        
+    }
 }
